@@ -1,0 +1,1 @@
+angular.module('controllers-loader',['app-controller','register-controllers','home-controllers','view-controllers'])

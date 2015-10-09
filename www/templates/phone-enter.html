@@ -1,0 +1,77 @@
+
+
+<ion-view view-title="Welcome" class="loginBg" hide-nav-bar="true" >
+<!-- <ion-nav-title><img src="img/logo.png" width="40"></ion-nav-title> -->
+
+  <ion-content class="padding">
+
+  <div class="row responsive-sm padding remvoeBP">
+      <div class="col">
+        <div class="content">
+
+                    
+                    <h3 class="text3">Welcome To Presence!</h3>
+                </div>
+            <!--<div class="app-logo"><img src="img/logo.png"></div>-->
+            <img class="displayed" src="img/logo.png"> 
+          
+                <div class="list list-inset removePM">
+                  <label class="item item-input"><input type="text" ng-model="phoneNumber" placeholder="Phone Number" > </label>
+                </div>
+            
+
+            <div ><button  class="button button-block button-balanced" ng-click="phoneEnter(phoneNumber)" > Next </button>  </div>
+                        <div class="loginButton"><button class="button ion-unlocked button-block button-royal" ng-click="devMasterLogin();" > Dev Master Login </button>  </div>
+            <div class="loginButton"><button class="button ion-unlocked button-block button-energized" ng-click="devStudentLogin();" > Dev Student Login </button>  </div>
+      </div>
+  </div>
+
+            
+
+  </ion-content>
+</ion-view>
+
+
+
+              
+
+<script type="text/javascript">
+function setCountry(code){
+        if(code || code==''){
+            var text = jQuery('a[cunt_code="'+code+'"]').html();
+            $(".dropdown dt a span").html(text);
+        }
+    }
+    $(document).ready(function() {
+        $(".dropdown img.flag").addClass("flagvisibility");
+
+        $(".dropdown dt a").click(function() {
+            $(".dropdown dd ul").toggle();
+        });
+
+        $(".dropdown dd ul li a").click(function() {
+            //console.log($(this).html())
+            var text = $(this).html();
+            $(".dropdown dt a span").html(text);
+            $(".dropdown dd ul").hide();
+            $("#result").html("Selected value is: " + getSelectedValue("country-select"));
+        });
+
+        function getSelectedValue(id) {
+            //console.log(id,$("#" + id).find("dt a span.value").html())
+            return $("#" + id).find("dt a span.value").html();
+        }
+
+        $(document).bind('click', function(e) {
+            var $clicked = $(e.target);
+            if (! $clicked.parents().hasClass("dropdown"))
+                $(".dropdown dd ul").hide();
+        });
+
+
+        $("#flagSwitcher").click(function() {
+            $(".dropdown img.flag").toggleClass("flagvisibility");
+        });
+    });
+
+</script>

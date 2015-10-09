@@ -1,0 +1,60 @@
+<div class="tabs-striped  tabs-background-positive tabs-color-light">
+    <div class="tabs">
+      <a class="tab-item " href="#/welcome/login"><i class="icon ion-unlocked"></i> Login </a>
+      <a class="tab-item active" href="#/welcome/signup"> <i class="icon ion-person"></i> Sing Up </a>
+    </div>
+  </div>
+
+<ion-view view-title="Sign Up" class="loginBg" hide-nav-bar="true" >
+  <ion-content class="padding">
+
+  <div class="row responsive-sm padding remvoeBP">
+    <div class="col">
+      <!--<div class="app-logo"><img src="img/logo.png"></div>-->
+      <!--<img class="displayed" src="img/logo.png"> -->
+      <h3 class="text3">Register</h3>
+<form name="registerForm" novalidate ng-submit="registerForm.$valid && register(user)"
+    ng-class="{ 'has-error' : registerForm.txtemail.$invalid && registerForm.$submitted }">
+    <div class="list list-inset removePM">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Email</span>
+        <input name="txtemail" type="email" ng-model="user.email" placeholder="Email"
+        ng-minlength="5"
+        ng-maxlength="30"
+        required>
+      </label>
+      <div class="form-errors" ng-messages="registerForm.txtemail.$error" ng-if="registerForm.$submitted">
+        <div class="form-error" ng-message="required">Debes ingresar algo como nombre@email.com.</div>
+        <div class="form-error" ng-message="email">This field is must be an email.</div>
+        <div class="form-error" ng-message="maxlength">Ops, parece ser muy grande el correo.</div>
+      </div>
+        <label class="item item-input item-floating-label" ng-class="{ 'has-error-lr' : registerForm.txtpassword.$invalid  && registerForm.$submitted}">
+        <span class="input-label">Password</span>
+        <input name="txtpassword" type="password" ng-model="user.password" placeholder="Password"
+        ng-minlength="5"
+        ng-maxlength="25"
+        required>
+      </label>
+      <div class="form-errors" ng-messages="registerForm.txtpassword.$error" ng-if="registerForm.$submitted">
+        <div class="form-error" ng-message="required">Debes ingresar una Contraseña.</div>
+        <div class="form-error" ng-message="minlength">Ops, parece ser muy corta las Contraseña.</div>
+        <div class="form-error" ng-message="maxlength">Ops, parece ser muy grande las Contraseña.</div>
+        <div class="form-error" ng-message="pattern">Debe ingresar solo caracteres letras y numeros.</div>
+      </div>
+    </div>
+    <div class="padding-top">
+      <input type="submit" value="Register" class="button button-block button-positive"/>
+    </div>
+  </form>
+
+  <div class="row  padding removePM">
+    <div class="col"> <a class=" button-positive button button-block" ng-click="facebookSignIn()"><i class="icon ion-social-facebook"></i></a> </div>
+    <div class="col"> <a class="button-calm button button-block" ng-click="twitterSignIn()"><i class="icon ion-social-twitter"></i></a> </div>
+     <div class="col"> <a class="button-assertive button button-block" ng-click="googleSignIn()"><i class="icon ion-social-google"></i></a> </div>
+  </div>
+
+  </ion-content>
+</ion-view>
+
+
+

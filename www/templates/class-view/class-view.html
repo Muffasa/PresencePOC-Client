@@ -1,0 +1,119 @@
+
+
+<ion-view view-title="Class Details" class="loginBg">
+<ion-nav-buttons side="right">
+        <button id="leftMenu" class="button button-icon button-clear ion-navicon" menu-toggle="right"></button>
+      </ion-nav-buttons>
+
+  <ion-content >
+
+
+        <ion-refresher class="refreshStyle"
+        pulling-text="Refresh Class Details..."
+        on-refresh="refresh()">
+      </ion-refresher>
+
+
+        <div class="list padding">
+              <div ng-if="class.active" class="button icon-right ion-power button-block button-balanced button-outline text padding">
+                          Attandace Active
+              </div>
+              <div ng-if="!class.active" class="button icon-right ion-power button-block button-assertive button-outline text padding">
+                          Attandace Closed
+              </div>
+              <div class="item item-icon-left ">
+                <i class="icon ion-ios-bookmarks"></i>
+                Course Name:
+                <span class="item-note">
+                  {{course.name}}     
+                </span>
+              </div>
+             
+              <a class="item item-icon-left ">
+                <i class="icon ion-person"></i> 
+                Creator:
+               <span class="item-note">  
+                  {{class.master.fullName}}
+                </span>              
+              </a>
+              <a class="item item-icon-left ">
+                <i class="icon ion-calendar"></i> 
+                Open Date:
+               <span class="item-note">  
+                  {{class.date | date:'dd/MM/yyyy HH:mm:ss '}}
+                </span>                
+              </a>
+              <a ng-if='!class.active' class="item item-icon-left ">
+                <i class="icon ion-calendar"></i> 
+                Closed Date:
+               <span class="item-note">  
+                  {{class.closingDate | date:'dd/MM/yyyy HH:mm:ss '}}
+                </span>
+              </a>
+              <a ng-if='class.active' class="item item-icon-left ">
+                <i class="icon ion-clock"></i>
+                Open For:
+               <span class="item-note"> 
+                  <timer ng-if="endTime" finish-callback="countDownfinished()" end-time="endTime">{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer>
+                  <div ng-if="!endTime"> This Attendance can be closed manually only </div>
+                </span>           
+              </a>
+              <a ng-if="$root.userType == 'master'" class="item item-icon-left item-button-right ">
+                <i class="icon ion-ios-location"></i>
+                Location:
+                <button ng-click="showLocationOnMap()" class="button button-positive">                 
+                  Open map
+                </button>          
+              </a>
+              
+              <a class="item item-icon-left " >
+                <i class="icon ion-university"></i>
+                Students:
+               <span class="badge badge-assertive">{{class.attendanceStudents.length}}/{{class.event.students.length}}</span> 
+              </a>
+
+             
+
+
+  </div> 
+          <div ng-if="$root.userType == 'master'">
+            <a  href='#/app/students-view/{{class._id}}' class="button icon-left ion-compose button-block button-calm">
+              Attend Student Manually
+            </a>
+          </div>
+          <!--<div ng-if="$root.userType == 'student'">
+            <div ng-if="userAtended">
+              <div  class="button icon-right ion-checkmark-round button-block button-balanced button-outline">
+                Successfuly Attended
+              </div>
+            </div>
+            <div ng-if="!userAtended">
+              <button ng-if="course.activeAttendanceInfo" ng-click="studentAttending(course.activeAttendanceInfo.id)" class="button icon-left ion-compose button-block button-balanced">
+                Attend To Class
+              </button>
+            </div>
+          </div>-->
+
+  </ion-content>
+<ion-footer-bar class="bar-dark">
+            <ion-process-spinner style="width:100%; text-align: center;" processing="spin" spinner="bubbles" css-class="spinner-balanced">
+                <div ng-if="$root.userType == 'master'">
+                       <button ng-if="class.active" ng-click="closeAttendance(course.activeAttendanceInfo.id)" class="button icon-left ion-android-hand button-assertive">
+                        close Attandance
+                      </button>
+                    </div>
+                    <div ng-if="$root.userType == 'student'">
+                      <div ng-if="userAtended">
+                        <div  class="button icon-right ion-checkmark-round button-balanced button-outline">
+                          Successfuly Attended
+                        </div>
+                      </div>
+                      <div ng-if="!userAtended">
+                        <button ng-if="course.activeAttendanceInfo" ng-click="studentAttending(course.activeAttendanceInfo.id)" class="button icon-left ion-compose button-balanced">
+                          Attend To Class
+                        </button>
+                      </div>
+              </div>
+            </ion-process-spinner>
+</ion-footer-bar>
+</ion-view>

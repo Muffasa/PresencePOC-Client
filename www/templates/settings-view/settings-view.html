@@ -1,0 +1,59 @@
+ 
+      
+<ion-view view-title="Settings">
+
+    <ion-content has-header="true">
+
+        <ul class="list">
+
+
+          <a class="item item-icon-left" ng-click="showMap()">
+            <i class="icon ion-ios-location"></i>
+            Simulate Location
+          </a>
+
+          <div class="item item-divider item-icon-left">
+            Radius
+            <i class="icon ion-android-radio-button-on"></i>
+          </div>
+           <label class="item item-input item-select">
+            <div class="input-label">
+              Attendance Radius 
+            </div>
+            <select  ng-change="updateRadius(radius)" ng-model="radius"> 
+              <option value="20">20 Meters</option>
+              <option value="30">30 Meters</option>
+              <option value="40">40 Meters</option>
+              <option ng-selected="true" value="50">50 Meters</option>
+              <option value="60">60 Meters</option>
+              <option value="70">70 Meters</option>
+              <option value="80">80 Meters</option>
+              <option value="90">90 Meters</option>
+              <option value="100">100 Meters</option>
+            </select>
+          </label>
+          <div class="item item-divider item-icon-left">
+            Uptime
+            <i class="icon ion-clock"></i>
+          </div>
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Attendance Uptime
+            </div>
+            <select  ng-change="updateUpTime(upTime)" ng-model="upTime"> 
+              <option value="15" ng-selected="true">15 Minutes</option>
+              <option value="30">30 Minutes</option>
+              <option value="45">45 Minutes</option>
+              <option value="60">1 Hour</option>
+              <option value="10001">Infinity</option>
+            </select>
+          </label>
+
+
+      
+
+    </ul>
+
+  </ion-content>
+
+</ion-view>

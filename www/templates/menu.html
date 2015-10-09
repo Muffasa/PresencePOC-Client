@@ -1,0 +1,29 @@
+<ion-side-menus enable-menu-with-back-views="false" >
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable bar-positive">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="right">
+        <button id="leftMenu" class="button button-icon button-clear ion-navicon" menu-toggle="right"></button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+  
+    <ion-nav-view name="menuContent"></ion-nav-view>
+
+  </ion-side-menu-content>
+
+  <ion-side-menu side="right" class="loginBg" >
+    <ion-header-bar class="bar-stable bar-positive">
+      <h1 class="title">Menu</h1>
+    </ion-header-bar>
+    <ion-content >
+      <ion-list id="menuLinks">
+        <ion-item menu-close href="#/app/courses-view"> Courses </ion-item>
+        <ion-item menu-close href="#/app/classes-view"> Classes </ion-item>
+        <ion-item ng-if="userType == 'student'" menu-close href="#/app/student-credits-view"> My Attendings </ion-item>
+        <ion-item ng-if="userType == 'master'"  menu-close href="#/app/settings-view"> Settings </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

@@ -1,0 +1,25 @@
+ 
+      
+<ion-view view-title="Classes">
+   <ion-nav-buttons side="primary">
+    <button class="button button-icon icon ion-ios-search-strong" ng-click="showFilterBar()">
+    </button>
+  </ion-nav-buttons>
+      <ion-content class="padding">
+        <ion-refresher
+		    pulling-text="Pull to refresh..."
+		    on-refresh="refreshAttendances()">
+		  </ion-refresher>
+      <h1>TBD Calendar</h1>
+         <div class="list">      	
+           <div class="padding" collection-repeat="class in classes">
+          <a ng-if="class.active" class=" item item-icon-left balanced" href="#/app/class-view/{{class._id}}" > 
+          {{class.date | filter:search.value}}
+         </a>  
+		     <a ng-if="!class.active" class=" item item-icon-left" href="#/app/class-view/{{class._id}}" > 
+		      {{class.date | filter:search.value}}
+		     </a>
+           </div>
+         </div>
+      </ion-content>
+</ion-view>

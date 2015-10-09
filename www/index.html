@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title> 
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/my-styles.css" rel="stylesheet">
+    <link href="css/custom-app.css" rel="stylesheet">
+    <link href="css/form-validation.css" rel="stylesheet">
+    <link href="css/md-lable.scss" rel="stylesheet">
+    <link rel="stylesheet" href="lib/ionic-filter-bar/dist/ionic.filter.bar.css">
+    <link rel="stylesheet" href="lib/ionic-filter-bar/scss/ionic.filter.bar.scss">
+    <link rel="stylesheet" href="lib/ionic-content-banner/dist/ionic.content.banner.css">
+    <link rel="stylesheet" href="lib/ionic-content-banner/scss/ionic.content.banner.scss">
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+  
+    <!-- ionic/angularjs js --> 
+    <script src="lib/ionic/js/ionic.bundle.js"></script>       
+
+    <!--Angular tools-->
+            <!-- Angular Messages-->
+            <script src="lib/angular-messages/angular-messages.js"></script> 
+            <!-- Angular Timer-->
+            <script src="lib/angular-timer/dist/angular-timer.js"></script>
+            <script src="lib/momentjs/min/moment.min.js"></script>
+            <script src="lib/momentjs/min/locales.min.js"></script>
+            <script src="lib/humanize-duration/humanize-duration.js"></script>
+
+    <!--ionic-filter-bar-->
+    <script src="lib/ionic-filter-bar/dist/ionic.filter.bar.js"></script> 
+    <!--ionic date-picker-->
+    <script src="lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script> 
+    <!--ionic content-banner-->
+    <script src="lib/ionic-content-banner/dist/ionic.content.banner.js"></script>
+    <!--ionic process-spinner-->
+    <script src="lib/ionic-process-spinner/src/ionic-process-spinner.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script> 
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+    <script src="gpsDetectionPlugin.js"></script>
+
+    <!--ngCordova-->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+     <!-- ionic core service-->
+     <script src="lib/ionic-service-core/ionic-core.js"></script> 
+     <!-- ionic push service-->
+       <script src="lib/ionic-service-push/ionic-push.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>    
+ 
+    <!--init--> 
+    <script src="js/init/init.js"></script> 
+    <script src="js/init/ionic-helpers-init.js"></script>
+    <script src="js/init/oneSignal-init.js"></script>
+    <script src="js/init/accurate-position-enchant-init.js"></script>
+    <!--controllers-->
+      <!--view-controllers-->
+      <script src="js/controllers/view-controllers.js"></script>
+       <script src="templates/design-page/design-page-controller.js"></script>
+       <script src="templates/courses-view/courses-view-controller.js"></script>
+       <script src="templates/course-view/course-view-controller.js"></script>
+       <script src="templates/classes-view/classes-view-controller.js"></script>
+       <script src="templates/class-view/class-view-controller.js"></script>
+       <script src="templates/students-view/students-view-controller.js"></script>
+       <script src="templates/settings-view/settings-view-controller.js"></script>
+
+    <script src="js/controllers/controllers-loader.js"></script>
+    <script src="js/controllers/app-controller.js"></script>
+    <script src="js/controllers/register-controllers.js"></script>
+    <script src="js/controllers/home-controllers.js"></script>
+    
+ 
+    <script src="js/services/services-loader.js"></script>
+    <script src="js/services/auth-service.js"></script>
+    <script src="js/services/firebase-service.js"></script>
+    <script src="js/services/GPS-service.js"></script>
+    <script src="js/services/register-service.js"></script>
+    <script src="js/services/server-service.js"></script>
+    <script src="js/services/user-service.js"></script>
+
+    <!--entities-->
+    <script src="js/entities/entities-loader.js"></script>
+    <script src="js/entities/Student.js"></script>
+
+
+
+  </head>
+
+  <body ng-app="PresencePOC">
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

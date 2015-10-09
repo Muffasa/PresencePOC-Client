@@ -1,0 +1,85 @@
+
+
+<ion-view view-title="Course Details" class="loginBg">
+<ion-nav-buttons side="right">
+        <button id="leftMenu" class="button button-icon button-clear ion-navicon" menu-toggle="right"></button>
+      </ion-nav-buttons>
+  <ion-content >
+
+        <ion-refresher class="refreshStyle"
+        pulling-text="Refresh Course Details..."
+        on-refresh="refresh()">
+      </ion-refresher>
+
+
+    <div class="list padding">
+              <div ng-if="course.activeAttendanceInfo" class="button icon-right ion-checkmark-round button-block button-balanced button-outline text padding">
+                           Active
+              </div>
+              <div class="item item-icon-left">
+                <i class="icon ion-ios-bookmarks"></i>
+                Name:
+                <span class="item-note">
+                  {{course.name}}     
+                </span>
+              </div>
+              <div class="item item-icon-left">
+              <i class="icon ion-earth"></i>
+                Organization:
+                <span class="item-note"> 
+                  {{course.organization}}                  
+                </span>
+              </div>
+              <a class="item item-icon-left" href="#/app/classes-view/{{course._id}}">
+              <i class="icon ion-android-calendar"></i>
+                Classes
+              </a>
+
+              <a ng-if="course.activeAttendanceInfo" class="item item-icon-right" href="#/app/class-view/{{course.activeAttendanceInfo.id}}">
+              <i class="icon ion-android-arrow-forward"></i>
+                Go To Active Class
+              </a>
+   </div> 
+        <!--   <div ng-if="$root.userType == 'master'">
+             <button ng-if="!course.activeAttendanceInfo" ng-click="openAttendance(course._id)" class="button icon-left ion-radio-waves button-block button-balanced">
+              Open Attandance
+            </button>
+            <button ng-if="course.activeAttendanceInfo" ng-click="closeAttendance(course.activeAttendanceInfo.id)" class="button icon-left ion-android-hand button-block button-assertive">
+              Close Attandance
+            </button>
+          </div>
+          <div ng-if="$root.userType == 'student'">
+            <button ng-if="course.activeAttendanceInfo" ng-click="studentAttending(course.activeAttendanceInfo.id)" class="button icon-left ion-compose button-block button-balanced">
+              Attend To Class
+            </button>
+          </div>-->
+
+  </ion-content>
+  <ion-footer-bar class="bar-dark">
+            <ion-process-spinner style="width:100%; text-align: center;" processing="spin" spinner="bubbles" css-class="spinner-balanced">
+                           <div ng-if="$root.userType == 'master'">
+                             <button ng-if="!course.activeAttendanceInfo" ng-click="openAttendance(course._id)" class="button button-big icon-left ion-radio-waves button-balanced">
+                              Open New Attandance
+                            </button>
+                            <button ng-if="course.activeAttendanceInfo" ng-click="closeAttendance(course.activeAttendanceInfo.id)" class="button icon-left ion-android-hand button-assertive">
+                              Close Attandance
+                            </button>
+                          </div>
+                          <div ng-if="$root.userType == 'student'">
+                            <div ng-if="!userAttended">
+                              <button ng-if="course.activeAttendanceInfo" ng-click="studentAttending(course.activeAttendanceInfo.id)" class="button icon-left ion-compose button-balanced">
+                                Attend To Most Recent Class
+                              </button>
+                            </div>
+                          <div ng-if="userAttended">
+                            <div  class="button icon-right ion-checkmark-round button-balanced button-outline">
+                              Successfuly Attended To Most Recent Class
+                            </div>
+                          </div>
+                      </div>
+
+                          </div>
+            </ion-process-spinner>
+</ion-footer-bar>
+</ion-view>
+
