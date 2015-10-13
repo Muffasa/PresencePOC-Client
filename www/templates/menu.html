@@ -19,6 +19,13 @@
     </ion-header-bar>
     <ion-content >
       <ion-list id="menuLinks">
+      <ion-item class="item item-icon-left" menu-close ui-sref="app.profile">
+                <i class="icon ion-ios-person"></i>
+                <div>Connected As</div>
+                <span class="item-note light">
+                  {{mainUser.fullName}}
+                </span>       
+       </ion-item>
         <ion-item menu-close href="#/app/courses-view"> Courses </ion-item>
         <ion-item menu-close href="#/app/classes"> Classes </ion-item>
         <ion-item ng-if="userType == 'master'"  menu-close href="#/app/settings-view"> Settings </ion-item>
