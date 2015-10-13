@@ -11,7 +11,9 @@
 		    on-refresh="refreshEvents()">
 		  </ion-refresher>
          <div class="list"> 
-
+              <div ng-if="events.length == 0" class="button button-block button-energized button-outline text padding">
+                           You dont have any courses yet
+              </div>
          	
            <div class="padding" collection-repeat="course in events">
 		     <a class=" item item-icon-left" href="#/app/course-view/{{course._id}}" > 

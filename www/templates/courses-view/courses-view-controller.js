@@ -16,13 +16,14 @@ angular.module('view-controllers')
           if (filterText) {
             console.log(filterText)
           }
-        },
+        },  
         filterProperties: ['name']
       })
     }
   $scope.refreshEvents = function(){
 	    ServerComS.getEventsById($rootScope.mainUser._id).then(function(response){
 	          $scope.events = response.data
+
 		},function(err){
 	               console.log(err)
                  var errorBannerClose = $ionicContentBanner.show({

@@ -16,8 +16,7 @@
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="10000"/>
-  <preference name="AutoHideSplashScreen" value="false" />
-  
+  <preference name="AutoHideSplashScreen" value="false"/>
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
@@ -40,8 +39,8 @@
     <icon src="resources\android\icon\drawable-xhdpi-icon.png" density="xhdpi"/>
     <icon src="resources\android\icon\drawable-xxhdpi-icon.png" density="xxhdpi"/>
     <icon src="resources\android\icon\drawable-xxxhdpi-icon.png" density="xxxhdpi"/>
-    <preference name="SplashScreenDelay" value="10000" />
-    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="SplashScreenDelay" value="10000"/>
+    <preference name="SplashMaintainAspectRatio" value="true"/>
   </platform>
   <platform name="ios">
     <preference name="KeyboardDisplayRequiresUserAction" value="false"/>

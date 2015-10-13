@@ -31,9 +31,9 @@ angular.module("register-service",[])
 			ID:tempUser.ID,
             hashedPassword:hashedPassword
 		}
-        ServerComS.createStudentUser(student).then(function(newStudent){
-            window.localStorage.setItem('uid',tempUser.uid)
-            window.localStorage.setItem('authToken',tempUser.authToken)
+        ServerComS.createStudentUser(student).then(function(res){
+            window.localStorage.setItem('uid',res.data.uid)
+            window.localStorage.setItem('authToken',res.data.authToken)
         	window.localStorage.setItem('ID',tempUser.ID)
         	window.localStorage.setItem('fullName',tempUser.fullName)
         	AuthS.auth().then(function(res){
@@ -58,8 +58,8 @@ angular.module("register-service",[])
 			activationCode:tempUser.activationCode
 		}
         ServerComS.createMasterUser(master).then(function(res){
-            window.localStorage.setItem('uid',tempUser.uid)
-            window.localStorage.setItem('authToken',tempUser.authToken)
+            window.localStorage.setItem('uid',res.data.uid)
+            window.localStorage.setItem('authToken',res.data.authToken)
         	window.localStorage.setItem('ID',tempUser.ID)
         	window.localStorage.setItem('fullName',tempUser.fullName)
         	window.localStorage.setItem('clientType','master')
@@ -79,6 +79,6 @@ angular.module("register-service",[])
 		sendPhoneNumberToServer:sendPhoneNumberToServer,
 		validateSmsCode:validateSmsCode,
 		createStudentUser:createStudentUser,
-		createMasterUser
+		createMasterUser 
 	}
 })

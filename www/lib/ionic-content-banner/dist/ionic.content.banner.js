@@ -157,14 +157,14 @@ angular.module('jett.ionic.content.banner', ['ionic']);
                     scope.close();
                   }, scope.autoClose, false);
                 }
-              }, 20, false);
+              }, 50, false);
             });
           };
 
           //set small timeout to let ionic set the active/cached view
           $timeout(function () {
             scope.show();
-          }, 10, false);
+          }, 30, false);
 
           // Expose the scope on $ionContentBanner's return value for the sake of testing it.
           scope.close.$scope = scope;

@@ -11,6 +11,9 @@ AuthS.devAuth(false)
 $scope.clearLocalStorage = function(){
 AuthS.cleanLocalStorage()
 }
+$scope.goToWelcomeLogin = function(){
+$state.go('welcome.login')
+}
 $rootScope.tempUser={}
 
   $scope.phoneEnter = function(number){ 
@@ -52,6 +55,7 @@ $rootScope.tempUser={}
 
       
     }
+    
     var validPhoneNumber = function(Pnumber){
       var number = String(Pnumber)
       return number[0]=="0"&&number[1]=="5"&&number.length==10
@@ -126,9 +130,10 @@ $rootScope.tempUser={}
       $rootScope.showLoading()
       registerFormValidation().then(function(){
         
-            ServerComS.sendIDToServer($scope.tempUser.ID).then(function(isMaster){
-
-                if(isMaster){
+            ServerComS.sendIDToServer($scope.tempUser.ID).then(function(res){
+                 var isMaster = res.data
+                if(isMaster)
+                {
                   if(!$scope.showActivationCodeInput){
                     $rootScope.popups.masterIDRcognized().then(function(res){
                      $scope.showActivationCodeInput = true
@@ -165,7 +170,6 @@ $rootScope.tempUser={}
     var registerFormValidation = function(){
       var d= $q.defer()
 
-      //todo, check ID with db and ask for code id the ID belonges to master
         if(String($scope.tempUser.ID).length != 9){
           $rootScope.hideLoading()
           $rootScope.popups.IDValidationFail().then(function(res){
@@ -207,7 +211,7 @@ $rootScope.tempUser={}
           },function (err){
             $rootScope.hideLoading()
               console.log(err)
-              if(err.status==422){
+              if(err.data.errmsg.indexOf('ID') > 0){
                  
                   $rootScope.popups.registerFaild(err).then(function(res){
                     $scope.tempUser.fullName=""

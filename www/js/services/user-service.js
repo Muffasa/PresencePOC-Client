@@ -17,6 +17,7 @@ angular.module("user-service",[])
     		$rootScope.mainUser = respond.data
             $rootScope.userType = respond.data.authToken.length > 42? 'master':'student'
     		console.log("user data updated successfuly")
+            $rootScope.$broadcast('mainUserInitialized')
     		d.resolve()
     	},function(err){
     		d.reject(err)

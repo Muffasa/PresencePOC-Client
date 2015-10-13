@@ -19,8 +19,12 @@ angular.module('view-controllers')
 	                $scope.endTime = new Date(response.data.activeAttendanceInfo.ClosingTime)
 	          	}
 	          
-	          if($rootScope.userType == 'student') 
+	          if($rootScope.userType == 'student'){
+	          	UserS.getUserData().then(function(){
 	          	$scope.checkForStudentAttendance()
+	            })
+	          } 
+	          	
 
             d.resolve()
 		},function(err){
@@ -152,7 +156,7 @@ angular.module('view-controllers')
 	        	$scope.startAttendanceInfoBanner = $ionicContentBanner.show({
 									                  autoClose:4000,
 									                  type:"info",
-									                  text:["Attending To Class..."]
+									                  text:["Attending To Most Recent Class..."]
 									                })
 	        	$scope.spin = true
 	              navigator.geolocation.getAccurateCurrentPosition(function(location){
@@ -163,8 +167,8 @@ angular.module('view-controllers')
 			                }
 			                var date = new Date().toJSON().slice(0,19)
 
-			                var radius = $rootScope.settingsRadius? $rootScope.settingsRadius:null
-			                var upTime = $rootScope.settingsUpTime? $rootScope.settingsUpTime:null
+			                //var radius = $rootScope.settingsRadius? $rootScope.settingsRadius:null
+			                //var upTime = $rootScope.settingsUpTime? $rootScope.settingsUpTime:null
 			                ServerComS.studentAttending(attendanceId,geolocation).then(function(res){
 			                	UserS.getUserData().then(function(){
 			                		$scope.studentAttendingSuccessBanner = $ionicContentBanner.show({
@@ -172,7 +176,7 @@ angular.module('view-controllers')
 									                  type:"success",
 									                  text:["Successfuly attended!"]
 									                })
-			                		$scope.getCourseData().then(function(){ // for 'you have been successfuly attended to this active class course'
+			                		$scope.getCourseData().then(function(){ // for 'you have been successfuly attended to this course most recent class'
 			                			
 			                		   $scope.spin = false	
 			                		})
@@ -212,22 +216,22 @@ angular.module('view-controllers')
 
   }
 	$scope.$on('$destroy', function() {
-    if($scope.errorBannerClose)
+    if($scope.errorBannerClose && typeof $scope.errorBannerClose.close == 'function')
     $scope.errorBannerClose.close()
 
-    if($scope.closeAttendanceInfoBanner)
+    if($scope.closeAttendanceInfoBanner && typeof $scope.closeAttendanceInfoBanner.close == 'function')
     $scope.closeAttendanceInfoBanner.close()
 
-    if($scope.studentAttendingSuccessBanner)
+    if($scope.studentAttendingSuccessBanner && typeof $scope.studentAttendingSuccessBanner.close == 'function')
     $scope.studentAttendingSuccessBanner.close()
 
-    if($scope.startAttendanceInfoBanner)
+    if($scope.startAttendanceInfoBanner && typeof $scope.startAttendanceInfoBanner.close == 'function')
     $scope.startAttendanceInfoBanner.close()
 
-    if($scope.aquirePositionSuccessBanner)
+    if($scope.aquirePositionSuccessBanner && typeof $scope.aquirePositionSuccessBanner.close == 'function')
     $scope.aquirePositionSuccessBanner.close()
 
-    if($scope.openAttendnaceSuccessBanner)
+    if($scope.openAttendnaceSuccessBanner && typeof $scope.openAttendnaceSuccessBanner.close == 'function')
     $scope.openAttendnaceSuccessBanner.close()
   })
 

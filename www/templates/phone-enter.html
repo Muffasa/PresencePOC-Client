@@ -15,14 +15,21 @@
             <!--<div class="app-logo"><img src="img/logo.png"></div>-->
             <img class="displayed" src="img/logo.png"> 
           
-                <div class="list list-inset removePM">
+      <div class="list list-inset removePM">
                   <label class="item item-input"><input type="text" ng-model="phoneNumber" placeholder="Phone Number" > </label>
                 </div>
             
 
             <div ><button  class="button button-block button-balanced" ng-click="phoneEnter(phoneNumber)" > Next </button>  </div>
-                        <div class="loginButton"><button class="button ion-unlocked button-block button-royal" ng-click="devMasterLogin();" > Dev Master Login </button>  </div>
-            <div class="loginButton"><button class="button ion-unlocked button-block button-energized" ng-click="devStudentLogin();" > Dev Student Login </button>  </div>
+
+
+
+          <div class="list-item"> 
+                <h4 class="list-item text">Allredy a member? Login!</h4>
+            </div>
+            <div class="loginButton">
+                <button class="button ion-unlocked button-block button-assertive" ng-click="goToWelcomeLogin()" > Login </button>  
+            </div>
       </div>
   </div>
 

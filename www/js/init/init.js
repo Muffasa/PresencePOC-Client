@@ -1,6 +1,6 @@
 angular.module("PresencePOC")
 
-.run(function($rootScope,$ionicPlatform,$state,AuthFlowS,AuthS,ServerComS){
+.run(function($rootScope,$ionicPlatform,$state,$timeout,AuthFlowS,AuthS,ServerComS){
 
    //AuthS.cleanLocalStorage()
 
@@ -30,7 +30,9 @@ angular.module("PresencePOC")
         })
       }  */
 
+      $timeout(function() {
 
+       if(!$rootScope.noInit){
         AuthS.auth().then(function(){
             console.log('auth success, redirecting courses page')
         },function(err){
@@ -42,6 +44,11 @@ angular.module("PresencePOC")
         }).finally(function(){
           navigator.splashscreen.hide()
         })
+       }
+
+      }, 100);
+
+        
 
   
   

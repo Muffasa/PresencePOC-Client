@@ -45,17 +45,23 @@ angular.module("auth-service",[])
 		 	})
                 return d.promise
 	 }
-	 var auth = function(){
+	 var auth = function(keepState){ 
 	 	var d =$q.defer()
 	 	
-	 		ServerComS.getUserCredentialsByAuth(window.localStorage.getItem('uid'),window.localStorage.getItem('authToken')).then(function(res){
+	 		ServerComS.getUserCredentialsByAuth({uid:window.localStorage.getItem('uid'),authToken:window.localStorage.getItem('authToken')}).then(function(res){
 		 		console.log("User got credentials from the server:" +  res.data)
 		 		UserS.getUserData(res.data.uid,res.data.authToken).then(function(){
-		 			$ionicHistory.nextViewOptions({
+		 			
+		 			
+		 			if(!keepState){
+		 				$ionicHistory.nextViewOptions({
 			              disableBack: true
 			          })
 			          $ionicHistory.clearHistory()
-		 			$state.go('app.courses-view')
+			          $state.go('app.courses-view')
+		 			} 
+		 				
+
                        d.resolve()
 		 		},function(err){
                    d.reject(err)
@@ -106,6 +112,7 @@ angular.module("auth-service",[])
 
 	 return{
 	 	auth:auth,
+	 	login:login,
 	 	unAuth:unAuth,
 	 	cleanLocalStorage:cleanLocalStorage,
 	 	devAuth:devAuth

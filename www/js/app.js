@@ -98,17 +98,6 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
   authStatus: false
   })
 //--------------------------------------
-.state('app.design-page', {
-    url: '/design-page',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/design-page/design-page.html',
-        controller: 'DesignPageCtrl'
-      }
-   },
-  authStatus: true,
-  master: true
-  })
 
 .state('app.courses-view', {
     url: '/courses-view',
@@ -166,15 +155,16 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
   master: true
   })
 
-
-
-
-
-
-
-
-
-.state('app.settings-view', {
+  .state('app.classes', {
+    url: '/classes',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/classes.html'
+      }
+    },
+  authStatus: true
+  })
+  .state('app.settings-view', {
     url: '/settings-view',
     views: {
       'menuContent': {
@@ -185,66 +175,6 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
   authStatus: true,
   master: true
   })
-
-
-
-
-
-
-
-
-
-.state('app.home-master', {
-    url: '/home-master',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/home-master.html',
-        controller: 'MasterController'
-      }
-   },
-  authStatus: true,
-  master: true
-  })
-.state('app.event-detail', {
-    url: '/home-master/:eventId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/home-master.html',
-        controller: 'EventDetailCtrl'
-      }
-   },
-  authStatus: true,
-  master: true
-  })
-.state('app.home-student', {
-    url: '/home-student',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/home-student.html',
-        controller: 'StudentController'
-      }
-   },
-  authStatus: true
-  })
-  .state('app.classes', {
-    url: '/classes',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/classes.html'
-      }
-    },
-  authStatus: true
-  })
-
-  .state('app.history', {
-      url: '/history',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/history.html'
-        }
-      },
-    authStatus: true
-    })
 ;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/welcome/phone-enter');

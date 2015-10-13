@@ -9,8 +9,9 @@ angular.module("PresencePOC")
         if(jsonData.additionalData.actionSelected=="attendButton"){
            $state.go('app.class-view',{attendanceId:jsonData.additionalData.attendanceId,fromNotification:true})
         }
-
+        $rootScope.noInit = true
         console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
+        
       };
 
       window.plugins.OneSignal.init("e98d2b3c-57f1-11e5-b578-83149ca42b15",
@@ -42,7 +43,7 @@ angular.module("PresencePOC")
     init();
     //window.plugins.OneSignal.deleteTags(["uid", "ID" , "phoneNumber" ]);
 
-    $rootScope.$on("userInit",function(){
+    $rootScope.$on("mainUserInitialized",function(){
 
       window.plugins.OneSignal.sendTags({uid: $rootScope.mainUser.uid,
                                          ID: $rootScope.mainUser.ID,
