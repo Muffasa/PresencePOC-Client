@@ -1,6 +1,7 @@
 angular.module("PresencePOC")
 
-.run(function($ionicPlatform,$rootScope,$state,ServerComS){
+.run(['$ionicPlatform','$rootScope','$state','ServerComS',
+     function($ionicPlatform,$rootScope,$state,ServerComS){
    var init = function(){
         // Enable to debug issues.
       // window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
@@ -55,4 +56,4 @@ angular.module("PresencePOC")
 
 
 
-})
+}])

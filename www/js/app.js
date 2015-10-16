@@ -6,7 +6,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-loader','jett.ionic.filter.bar','jett.ionic.content.banner','ionicProcessSpinner','ngCordova','ngMessages','ionic.service.core','ionic.service.push'])
 
-.run(function($ionicPlatform,$rootScope,$timeout) {
+.run(['$ionicPlatform','$rootScope','$timeout',
+     function($ionicPlatform,$rootScope,$timeout) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -39,9 +40,10 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
       },300);
     } 
   });
-})
+}])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(['$stateProvider', '$urlRouterProvider',
+       function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
     .state('app', {
@@ -178,4 +180,4 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
 ;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/welcome/phone-enter');
-});
+}]);

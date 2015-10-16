@@ -1,6 +1,7 @@
 angular.module('view-controllers')
 
-.controller('ClassViewCtrl',function($scope,$rootScope,$stateParams,$q,$ionicContentBanner,ServerComS,GPSS,AuthS,UserS){
+.controller('ClassViewCtrl',['$scope','$rootScope','$stateParams','$q','$ionicContentBanner','ServerComS','GPSS','AuthS','UserS',
+	       function($scope,$rootScope,$stateParams,$q,$ionicContentBanner,ServerComS,GPSS,AuthS,UserS){
 
 	$scope.$on('$ionicView.enter',function(){
 		$rootScope.showLoading()
@@ -79,7 +80,7 @@ angular.module('view-controllers')
 									                  autoClose:1,
 									                  type:"info",
 									                  text:[""]
-									                })
+									                })()
 
 	        	$scope.startAttendanceInfoBanner2 = $ionicContentBanner.show({
 									                  autoClose:4001,
@@ -106,6 +107,11 @@ angular.module('view-controllers')
 			                	})
 			                	
 			                },function(err){
+			                	$ionicContentBanner.show({
+									                  autoClose:1,
+									                  type:"error",
+									                  text:[""]
+									                })()
 			                	$scope.errorBannerClose2 = $ionicContentBanner.show({
 									                  autoClose:4000,
 									                  type:"error",
@@ -114,6 +120,11 @@ angular.module('view-controllers')
 			                	$scope.spin2 = false
 			                })
 	              }, function(err){
+	              	$ionicContentBanner.show({
+									                  autoClose:1,
+									                  type:"error",
+									                  text:[""]
+									                })()
 	                $scope.errorBannerClose2 = $ionicContentBanner.show({
 									                  autoClose:4000,
 									                  type:"error",
@@ -122,7 +133,7 @@ angular.module('view-controllers')
 	                $scope.spin2 = false  
 	              }, function(data){
 	                console.log("on proggress...data:" +data) 
-	              }, {desiredAccuracy:20, maxWait:7000, age:60000})
+	              }, {desiredAccuracy:30, maxWait:10000})
 
 
 	      }
@@ -177,4 +188,4 @@ angular.module('view-controllers')
     $scope.aquirePositionSuccessBanner2.close()
 
   })
-})
+}])

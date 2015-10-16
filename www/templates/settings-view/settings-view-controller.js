@@ -1,6 +1,7 @@
 angular.module('view-controllers')
 
-.controller('SettingsViewCtrl',function($rootScope,$scope){
+.controller('SettingsViewCtrl',['$rootScope','$scope',
+	        function($rootScope,$scope){
 	$rootScope.$on('userInit',function(){
 			
 	})
@@ -12,4 +13,4 @@ angular.module('view-controllers')
     	$rootScope.settingsUpTime = upTime
     }
 
-}) 
+}]) 

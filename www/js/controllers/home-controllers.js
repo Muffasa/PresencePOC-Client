@@ -1,6 +1,7 @@
 angular.module("home-controllers",[])
 
-.controller('MasterController',function($rootScope,$scope,$ionicFilterBar,$timeout,ServerComS,GPSS){
+.controller('MasterController',['$rootScope','$scope','$ionicFilterBar','$timeout','ServerComS','GPSS',
+           function($rootScope,$scope,$ionicFilterBar,$timeout,ServerComS,GPSS){
   $scope.$on('$ionicView.enter', function(e) {
     $rootScope.showLoading()
       $timeout(function(){
@@ -85,8 +86,8 @@ angular.module("home-controllers",[])
     })
 	}
 	
-})
-.controller('StudentController',function(){
+}])
+/*.controller('StudentController',function(){
 	
 })
 .controller('EventDetailCtrl',function($rootScope,$scope,$state,$stateParams,ServerComS){
@@ -98,4 +99,4 @@ angular.module("home-controllers",[])
 
           })
   })
-})
+})*/

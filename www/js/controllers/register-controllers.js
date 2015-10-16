@@ -1,6 +1,7 @@
 angular.module("register-controllers",[])
 
-.controller('WelcomeCtrl', function($q,$rootScope,$scope,$state,$ionicViewService,RegisterS,AuthS,ServerComS) {
+.controller('WelcomeCtrl',['$q','$rootScope','$scope','$state','$ionicViewService','RegisterS','AuthS','ServerComS', 
+            function($q,$rootScope,$scope,$state,$ionicViewService,RegisterS,AuthS,ServerComS) {
 
 $scope.devMasterLogin = function(){
 AuthS.devAuth(true)
@@ -255,9 +256,10 @@ $rootScope.tempUser={}
     }
 
 
-})
+}])
 
-.controller('LoginCtrl',function($rootScope,$scope,$state,AuthS){
+.controller('LoginCtrl',['$rootScope','$scope','$state','AuthS',
+            function($rootScope,$scope,$state,AuthS){
   $scope.login = function(){
     $rootScope.showLoading()
     var MPN = {
@@ -273,5 +275,5 @@ $rootScope.tempUser={}
           })
         }).finally(function(){$rootScope.hideLoading()})
   }
-})
+}])
 

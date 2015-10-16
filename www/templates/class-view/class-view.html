@@ -54,7 +54,7 @@
                 <i class="icon ion-clock"></i>
                 Open For:
                <span class="item-note"> 
-                  <timer ng-if="endTime" finish-callback="countDownfinished()" end-time="endTime">{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer>
+                  <timer ng-if="endTime" finish-callback="countDownfinished()" end-time="endTime">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>
                   <div ng-if="!endTime"> This Attendance can be closed manually only </div>
                 </span>           
               </a>

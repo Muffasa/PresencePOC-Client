@@ -1,6 +1,7 @@
 angular.module('view-controllers')
 
-.controller('ClassesViewCtrl',function($rootScope,$scope,$q,$stateParams,$ionicContentBanner,ServerComS){
+.controller('ClassesViewCtrl',['$rootScope','$scope','$q','$stateParams','$ionicContentBanner','ServerComS',
+           function($rootScope,$scope,$q,$stateParams,$ionicContentBanner,ServerComS){
 	$scope.$on('$ionicView.enter',function(){
 		$rootScope.showLoading()
       $scope.refreshAttendances().finally(function(){
@@ -28,4 +29,4 @@ $scope.refreshAttendances = function(){
     return d.promise
   }
 	
-})
+}])

@@ -1,6 +1,7 @@
 angular.module('view-controllers')
 
-.controller('CoursesViewCtrl',function($rootScope,$scope,$stateParams,$ionicContentBanner,$ionicFilterBar,ServerComS){
+.controller('CoursesViewCtrl',['$rootScope','$scope','$stateParams','$ionicContentBanner','$ionicFilterBar','ServerComS',
+           function($rootScope,$scope,$stateParams,$ionicContentBanner,$ionicFilterBar,ServerComS){
 	    
   $scope.$on('$ionicView.beforeEnter',function(){
      $rootScope.showLoading()
@@ -42,4 +43,4 @@ angular.module('view-controllers')
 
 
 
-})
+}])

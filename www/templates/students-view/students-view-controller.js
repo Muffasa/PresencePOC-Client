@@ -1,6 +1,7 @@
 angular.module('view-controllers')
 
-.controller('StudentsViewCtrl',function($rootScope,$scope,$stateParams,$timeout,$ionicFilterBar,GPSS,ServerComS){
+.controller('StudentsViewCtrl',['$rootScope','$scope','$stateParams','$timeout','$ionicFilterBar','GPSS','ServerComS',
+	       function($rootScope,$scope,$stateParams,$timeout,$ionicFilterBar,GPSS,ServerComS){
 
 	$scope.$on('$ionicView.beforeEnter',function(){
 		
@@ -69,4 +70,4 @@ angular.module('view-controllers')
 		
 	}
 
-})
+}])

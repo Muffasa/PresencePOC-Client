@@ -1,6 +1,7 @@
 angular.module('view-controllers')
 
-.controller('CourseViewCtrl',function($rootScope,$scope,$q,$state,$stateParams,$ionicContentBanner,$timeout,GPSS,ServerComS,UserS){
+.controller('CourseViewCtrl',['$rootScope','$scope','$q','$state','$stateParams','$ionicContentBanner','$timeout','GPSS','ServerComS','UserS',
+	       function($rootScope,$scope,$q,$state,$stateParams,$ionicContentBanner,$timeout,GPSS,ServerComS,UserS){
 
 	$scope.$on('$ionicView.beforeEnter',function(){
 	   $rootScope.showLoading() 
@@ -101,20 +102,25 @@ angular.module('view-controllers')
 			                	$scope.errorBannerClose = $ionicContentBanner.show({
 									                  autoClose:4000,
 									                  type:"error",
-									                  text:["an error occurred, please try again later"]
+									                  text:["An error occurred, please try again later"]
 									                })
 			                	$scope.spin = false
 			                })
 	              }, function(err){
+	              	$ionicContentBanner.show({
+									                  autoClose:1,
+									                  type:"error",
+									                  text:[""]
+									                })()
 	                $scope.errorBannerClose = $ionicContentBanner.show({
 									                  autoClose:4000,
 									                  type:"error",
-									                  text:["failed To aquire location"]
+									                  text:["Failed To Aquire Location"]
 									                })
 	                $scope.spin = false  
 	              }, function(data){
 	                console.log("on proggress...data:" +JSON.stringify(data))
-	              }, {desiredAccuracy:20, maxWait:7000})
+	              }, {desiredAccuracy:30, maxWait:10000})
 
 
 	      }
@@ -199,7 +205,7 @@ angular.module('view-controllers')
 	                $scope.spin = false  
 	              }, function(data){
 	                console.log("on proggress...data:" +data) 
-	              }, {desiredAccuracy:20, maxWait:7000, age:60000})
+	              }, {desiredAccuracy:30, maxWait:10000})
 
 
 	      }
@@ -235,4 +241,4 @@ angular.module('view-controllers')
     $scope.openAttendnaceSuccessBanner.close()
   })
 
-})
+}])

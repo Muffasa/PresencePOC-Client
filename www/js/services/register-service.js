@@ -1,6 +1,7 @@
 angular.module("register-service",[])
 
-.factory("RegisterS",function($rootScope,$q,ServerComS,UserS,AuthS){
+.factory("RegisterS",['$rootScope','$q','ServerComS','UserS','AuthS',
+        function($rootScope,$q,ServerComS,UserS,AuthS){
 
 	var sendPhoneNumberToServer = function(tempUser){
 		var d =$q.defer()
@@ -75,10 +76,10 @@ angular.module("register-service",[])
         return d.promise
 	}
 
-	return{
+	return {
 		sendPhoneNumberToServer:sendPhoneNumberToServer,
 		validateSmsCode:validateSmsCode,
 		createStudentUser:createStudentUser,
-		createMasterUser 
+		createMasterUser:createMasterUser 
 	}
-})
+}]);

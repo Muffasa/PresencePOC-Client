@@ -1,6 +1,7 @@
 angular.module("server-service",[])
 
-.factory("ServerComS",function($rootScope,$q,$http){
+.factory("ServerComS",['$rootScope','$q','$http',
+	    function($rootScope,$q,$http){
 	var baseUrl = 'http://46.101.206.21:8080/';
 
 
@@ -230,5 +231,5 @@ angular.module("server-service",[])
 		    return d.promise  
 		  }      
 	}		 
-})
+}])
 

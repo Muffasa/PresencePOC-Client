@@ -1,5 +1,6 @@
 angular.module('firebase-service',[])
 
-.factory('FirebaseS',function($firebaseArray,$firebaseObject){
+.factory('FirebaseS',['$firebaseArray','$firebaseObject',
+	function($firebaseArray,$firebaseObject){
 	
-})
+}])

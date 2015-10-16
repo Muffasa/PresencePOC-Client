@@ -1,6 +1,6 @@
 angular.module("auth-service",[])
 
-.factory("AuthFlowS",function($rootScope){
+.factory("AuthFlowS",['$rootScope',function($rootScope){
 	 var isFirstTime = function(){
 	 	return !window.localStorage.getItem("MPN")         
 	 }
@@ -20,9 +20,10 @@ angular.module("auth-service",[])
 	 }
    
 
-})
+}])
 
-.factory("AuthS",function($rootScope,$q,$state,$ionicHistory,ServerComS,UserS){
+.factory("AuthS",['$rootScope','$q','$state','$ionicHistory','ServerComS','UserS',
+	     function($rootScope,$q,$state,$ionicHistory,ServerComS,UserS){
 	var d = $q.defer()
 	 var login = function(MPN,password){
                 ServerComS.getUserCredentials(MPN,password).then(function(res){
@@ -119,4 +120,4 @@ angular.module("auth-service",[])
 	 }
    
 
-})
+}])

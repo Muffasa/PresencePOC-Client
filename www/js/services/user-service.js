@@ -1,6 +1,7 @@
 angular.module("user-service",[])
 
-.factory("UserS",function($rootScope,$q,ServerComS){
+.factory("UserS",['$rootScope','$q','ServerComS',
+        function($rootScope,$q,ServerComS){
 
     $rootScope.mainUser = {}
 
@@ -29,4 +30,4 @@ angular.module("user-service",[])
 		getUserData:getUserData
 	}
 
-})
+}])

@@ -1,6 +1,7 @@
 angular.module("PresencePOC")
 
-.run(function($rootScope,$ionicPlatform,$state,$timeout,AuthFlowS,AuthS,ServerComS){
+.run(['$rootScope','$ionicPlatform','$state','$timeout','AuthFlowS','AuthS','ServerComS',
+     function($rootScope,$ionicPlatform,$state,$timeout,AuthFlowS,AuthS,ServerComS){
 
    //AuthS.cleanLocalStorage()
 
@@ -54,4 +55,4 @@ angular.module("PresencePOC")
   
    })
 
-})
+}])

@@ -3,7 +3,7 @@ angular.module("GPS-service",[])
 .run(function($rootScope){
 	
 })
-.factory("GPSS",function($q){
+.factory("GPSS",['$q',function($q){
 	document.addEventListener("deviceready", init, false);
 
   
@@ -45,8 +45,9 @@ angular.module("GPS-service",[])
 		isActive:isActive,
 		goToSettings:goToSettings
 	}
-})
-.factory("LocationS",function($q,$cordovaGeolocation,$ionicLoading){
+}])
+.factory("LocationS",['$q','$cordovaGeolocation','$ionicLoading',
+	     function($q,$cordovaGeolocation,$ionicLoading){
 
 		document.addEventListener("deviceready", init, false);
 
@@ -111,7 +112,7 @@ var getCurrentLocation = function(){
 	return {
 		getCurrentLocation:getCurrentLocation
 	}
-})
+}])
 
 
        

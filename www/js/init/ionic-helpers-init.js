@@ -1,6 +1,7 @@
 angular.module("PresencePOC")
 
-.run(function($ionicPlatform,$ionicPopup,$ionicLoading,$ionicContentBanner,$rootScope,$q){
+.run(['$ionicPlatform','$ionicPopup','$ionicLoading','$ionicContentBanner','$rootScope','$q',
+	function($ionicPlatform,$ionicPopup,$ionicLoading,$ionicContentBanner,$rootScope,$q){
 	$ionicPlatform.ready(function(){
 		$rootScope.popups = {
 
@@ -8,7 +9,7 @@ angular.module("PresencePOC")
 		        	var d = $q.defer()
 		        	$ionicPopup.confirm({
 		                title: 'GPS off',
-		                template: 'You have to turn on the GPS in order to continiue',
+		                template: 'You have to turn on the GPS in order to continue',
 		                cancelText:'Cancel',
 		                okText:'Turn on'
 		              }).then(function(res){ 
@@ -34,7 +35,7 @@ angular.module("PresencePOC")
 		        	var d = $q.defer()
 		        	  $ionicPopup.alert({
 	                title:"Allready registered",
-	                template:"The phone number you entered is allredy registered, please try again."
+	                template:"The phone number you entered is allredy registered."
 	              }).then(function(res){
 		              	d.resolve(res)
 		              },function(err){
@@ -54,23 +55,11 @@ angular.module("PresencePOC")
 		              })
 		        	return d.promise
 		        },
-		        phoneNumberExist:function(){
-		        	var d = $q.defer()
-		        	  $ionicPopup.alert({
-	                title:"Allready registered",
-	                template:"The phone number you entered is allredy registered, please try again."
-	              }).then(function(res){
-		              	d.resolve(res)
-		              },function(err){
-		              	d.reject(err)
-		              })
-		        	return d.promise
-		        },
 		        passwordsDoNotMatch:function(){
 		        	var d = $q.defer()
 		        	  $ionicPopup.alert({
 	                title:"Unmached Passwords",
-	                template:"The passwords and the confirmation do not match, please try again."
+	                template:"The password and the confirmation do not match, please try again."
 	              }).then(function(res){
 		              	d.resolve(res)
 		              },function(err){
@@ -82,7 +71,7 @@ angular.module("PresencePOC")
 		        	var d = $q.defer()
 		        	  $ionicPopup.alert({
 	                title:"To Short Password",
-	                template:"The password must contain atleast 8 chars."
+	                template:"The password must contain at least 8 chars."
 	              }).then(function(res){
 		              	d.resolve(res)
 		              },function(err){
@@ -94,7 +83,7 @@ angular.module("PresencePOC")
 		        	var d = $q.defer()
 		        	  $ionicPopup.alert({
 	                title:"Invalid ID",
-	                template:"The ID must contain 9 digits, please try again."
+	                template:"The ID number must contain 9 digits, please try again."
 	              }).then(function(res){
 		              	d.resolve(res)
 		              },function(err){
@@ -106,7 +95,7 @@ angular.module("PresencePOC")
 		        	var d = $q.defer()
 		        	  $ionicPopup.alert({
 	                title:"Registered!",
-	                template:"You have successfuly registered."
+	                template:"You have successfully registered."
 	              }).then(function(res){
 		              	d.resolve(res)
 		              },function(err){
@@ -141,8 +130,8 @@ angular.module("PresencePOC")
 		        faildToGetEvents:function(text){
 		        	var d = $q.defer()
 		        	  $ionicPopup.alert({
-	                title:"Faild to load courses",
-	                template:"could not retrive courses from the server, please try again later"
+	                title:"Failed to load courses",
+	                template:"could not retrieve courses from the server, please try again"
 	              }).then(function(res){
 		              	d.resolve(res)
 		              },function(err){
@@ -154,7 +143,7 @@ angular.module("PresencePOC")
 		        	var d = $q.defer()
 				  	  $ionicPopup.alert({
 		                title:"Attended!",
-		                template:"You have been successfuly attented to the class!"
+		                template:"You have been successfully attented to the class"
 		              }).then(function(res){
 		              	d.resolve(res)
 		              },function(err){
@@ -190,7 +179,7 @@ angular.module("PresencePOC")
 		        	var d = $q.defer()
 				  	  $ionicPopup.confirm({
 		                title:"Master ID",
-		                template:"This ID recognized as a master ID, please provide the matching activation code"
+		                template:"This ID number is recognized as a master ID, please provide the code"
 		              }).then(function(res){
 		              	d.resolve(res)
 		              },function(err){
@@ -202,7 +191,7 @@ angular.module("PresencePOC")
 		        	var d = $q.defer()
 				  	  $ionicPopup.confirm({
 		                title:"ID do not exist",
-		                template:"The ID is not exist in the system, make sure you entered it correctly."
+		                template:"The ID number does not exist in the system."
 		              }).then(function(res){
 		              	d.resolve(res)
 		              },function(err){
@@ -214,7 +203,7 @@ angular.module("PresencePOC")
 		        	var d = $q.defer()
 				  	  $ionicPopup.alert({
 		                title:"Server Error",
-		                template:"Somthing went wrong, please try again later."
+		                template:"Something went wrong, please try again later."
 		              }).then(function(res){
 		              	d.resolve(res)
 		              },function(err){
@@ -255,4 +244,4 @@ angular.module("PresencePOC")
             }
 	})
 	
-})
+}])
