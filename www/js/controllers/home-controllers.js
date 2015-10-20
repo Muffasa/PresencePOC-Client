@@ -79,7 +79,7 @@ angular.module("home-controllers",[])
                 alert("faild To aquire location");  
               }, function(data){
                 console.log("on proggress...data:" +data)
-              }, {desiredAccuracy:20, maxWait:7000})
+              }, {desiredAccuracy:20, maxWait:20000})
 
 
       }

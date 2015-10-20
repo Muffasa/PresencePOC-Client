@@ -54,7 +54,7 @@ angular.module('entities')
                   $rootScope.hideLoading()  
                 }, function(data){
                   console.log("on proggress...data:" +data) 
-                }, {desiredAccuracy:20, maxWait:7000, age:60000})
+                }, {desiredAccuracy:20, maxWait:20000})
 
 
         }
