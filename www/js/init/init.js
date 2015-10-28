@@ -8,8 +8,8 @@ angular.module("PresencePOC")
    $ionicPlatform.ready(function(){
    
     $rootScope.settingsRadius = 50
-    $rootScope.settingsUpTime = 15
-      
+    $rootScope.settingsUpTime = 15 
+     
       //$state.go('welcome.phone-enter')
     /*  if(AuthFlowS.isFirstTime())
       	$state.go('welcome.phone-enter')
@@ -38,10 +38,10 @@ angular.module("PresencePOC")
             console.log('auth success, redirecting courses page')
         },function(err){
           console.log('failed to auth, redirecting to login page')
-          if(AuthFlowS.isFirstTime())
+         // if(AuthFlowS.isFirstTime())
             $state.go('welcome.phone-enter')
-          else
-           $state.go('welcome.login')            
+          //else
+           //$state.go('welcome.login')            
         }).finally(function(){
           navigator.splashscreen.hide()
         })
