@@ -19,6 +19,7 @@ angular.module("server-service",[])
 			//	console.log('ServerComs POST res:'+JSON.stringify(res))
 			     d.resolve(res);
 			    },function(err){
+			    	console.log('server responded with error:'+err)
 			      d.reject(err);
 			    })
 		    return d.promise;
@@ -229,7 +230,56 @@ angular.module("server-service",[])
 		    })
  
 		    return d.promise  
-		  }      
+		  }
+
+		  ,
+		  submitID : function(ID){
+		    var d =$q.defer()
+		    var data = {ID:ID}
+		    POST("submitID",data).then(function(res){
+		      d.resolve(res);
+		    },function(err){
+		      d.reject(err);
+		    })
+ 
+		    return d.promise  
+		  } 
+		  ,
+		  attachPhoneNumberToID : function(ID,phoneNumber,email){
+		    var d =$q.defer()
+		    var data = {ID:ID,phoneNumber:phoneNumber,email:email}
+		    POST("attachPhoneNumberToID",data).then(function(res){
+		      d.resolve(res);
+		    },function(err){
+		      d.reject(err);
+		    })
+ 
+		    return d.promise  
+		  } 
+		  ,
+		  sumbmitSMSCode : function(eventId){
+		    var d =$q.defer()
+		    var data = {eventId:eventId}
+		    POST("getAttendancesByEventId",data).then(function(res){
+		      d.resolve(res);
+		    },function(err){
+		      d.reject(err);
+		    })
+ 
+		    return d.promise  
+		  }       
+		  ,
+		  sumbmitSMSCodeMaster : function(SMSCode,authCode,email){
+		    var d =$q.defer()
+		    var data = {SMSCode:SMSCode,authCode:authCode,email:email}
+		    POST("sumbmitSMSCodeMaster",data).then(function(res){
+		      d.resolve(res);
+		    },function(err){
+		      d.reject(err);
+		    })
+ 
+		    return d.promise  
+		  }  
 	}		 
 }])
 

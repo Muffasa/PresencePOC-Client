@@ -9,29 +9,9 @@ angular.module("PresencePOC")
    
     $rootScope.settingsRadius = 50
     $rootScope.settingsUpTime = 15 
-     
-      //$state.go('welcome.phone-enter')
-    /*  if(AuthFlowS.isFirstTime())
-      	$state.go('welcome.phone-enter')
-      else if(AuthFlowS.isRegistered){
-       	AuthS.auth().then(function(clientType){
-      		if(clientType.indexOf("student") > -1){
-      			$state.go('app.home-student')
-      		}else if(clientType.indexOf("master") > -1){
-                $state.go('app.home-master')
-      		}
+     $state.go('work-space')
 
-          $ionicViewService.nextViewOptions({
-              disableBack: true
-          })
-          $ionicViewService.clearHistory()
-          clientType.indexOf("student")>-1? $state.go('app.home-student'):$state.go('app.home-master')
-      	},function(err){ 
-          $state.go('welcome.login')
-        })
-      }  */
-
-      $timeout(function() {
+     /* $timeout(function() {
 
        if(!$rootScope.noInit){
         AuthS.auth().then(function(){
@@ -47,7 +27,7 @@ angular.module("PresencePOC")
         })
        }
 
-      }, 100);
+      }, 100);*/
 
         
 

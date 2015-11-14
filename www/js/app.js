@@ -46,6 +46,12 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
        function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
+  .state('work-space', {
+    url: '/work-space',
+    templateUrl: 'templates/work-space-view/work-space-view.html',
+    controller: 'WorkSpaceCtrl'
+  })
+
     .state('app', {
     url: '/app',
     abstract: true,
@@ -59,6 +65,53 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
     templateUrl: 'templates/welcome-menu.html',
     controller: 'WelcomeCtrl'
   })  
+  .state('regFlow', {
+    url: '/regFlow',
+    abstract: true,
+    templateUrl: 'templates/regFlow.html',
+    controller: 'WelcomeCtrl'
+  }) 
+  //--------------------------------------
+  .state('regFlow.ID-enter', {
+    url: '/ID-enter',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/registration-flow-views/ID-enter-view/ID-enter-view.html',
+      }
+   },
+  authStatus: false,
+  cantBackTo:true
+  })
+  .state('regFlow.SMS-validation', {
+    url: '/SMS-validation',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/registration-flow-views/SMS-validation-view/SMS-validation-view.html',
+      }
+   },
+  authStatus: false,
+  cantBackTo:true
+  })
+  .state('regFlow.attach-phone', {
+    url: '/regFlow.attach-phone',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/registration-flow-views/attach-phone-view/attach-phone-view.html',
+      }
+   },
+  authStatus: false,
+  cantBackTo:true
+  })
+  .state('regFlow.upload-ID-photo', {
+    url: '/upload-ID-photo',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/registration-flow-views/upload-ID-photo/upload-ID-photo.html',
+      }
+   },
+  authStatus: false,
+  cantBackTo:true
+  })
 //--------------------------------------
 .state('welcome.phone-enter', {
     url: '/phone-enter',
