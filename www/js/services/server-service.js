@@ -10,9 +10,9 @@ angular.module("server-service",[])
         	var d =$q.defer();
             
             if(!data||!data.uid||!data.authToken)
-        	if($rootScope.mainUser.authToken&&$rootScope.mainUser.uid){
-	        	data.authToken = $rootScope.mainUser.authToken
-	        	data.uid = $rootScope.mainUser.uid
+        	if($rootScope.authToken&&$rootScope.uid){
+	        	data.authToken = $rootScope.authToken
+	        	data.uid = $rootScope.uid
             }
 
 			$http.post(baseUrl+action,data).then(function(res){
@@ -279,8 +279,7 @@ angular.module("server-service",[])
 		    })
  
 		    return d.promise  
-		  } 
-		  ,
+		  },
 		  creatAuthSession : function(token){
 		    var d =$q.defer()
 		    var data = {token:token}
@@ -291,7 +290,18 @@ angular.module("server-service",[])
 		    })
  
 		    return d.promise  
-		  }  
+		  },
+		  testAuth : function(){
+		    var d =$q.defer()
+		    var data = {token:token}
+		    POST("creatAuthSession",data).then(function(res){
+		      d.resolve(res);
+		    },function(err){
+		      d.reject(err);
+		    })
+ 
+		    return d.promise  
+		  }   
 	}		 
 }])
 

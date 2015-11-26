@@ -7,17 +7,17 @@ angular.module('view-controllers')
 			
 	})
 
-	var $scope.userData = {}
-	$scope.userData.ID=$stateParams.ID
 
-	$scope.attachPhone = function(phoneNumber){
-		NewRegS.postPhoneNumber(phoneNumber).then(function(res){
+	$scope.attachPhone = function(phoneNumber,email){
+		NewRegS.postPhoneNumber(phoneNumber,email,$rootScope.userID).then(function(res){
 			if(res.success){
 				$state.go('regFlow.SMS-validation')
 			}
 			else{
 				PopupsS.show('Failed to attach the phone number to the requested ID.','OK')
 			}
+		},function(err){
+			PopupsS.show(err.message)
 		})
 	}
 

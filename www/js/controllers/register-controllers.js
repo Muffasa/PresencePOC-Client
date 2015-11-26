@@ -1,7 +1,7 @@
 angular.module("register-controllers",[])
 
-.controller('WelcomeCtrl',['$q','$rootScope','$scope','$state','$ionicViewService','RegisterS','AuthS','ServerComS', 
-            function($q,$rootScope,$scope,$state,$ionicViewService,RegisterS,AuthS,ServerComS) {
+.controller('WelcomeCtrl',['$q','$rootScope','$scope','$state','$ionicHistory','RegisterS','AuthS','ServerComS', 
+            function($q,$rootScope,$scope,$state,$ionicHistory,RegisterS,AuthS,ServerComS) {
 
 $scope.devMasterLogin = function(){
 AuthS.devAuth(true)
@@ -203,10 +203,10 @@ $rootScope.tempUser={}
           RegisterS.createStudentUser($scope.tempUser).then(function(res){
             $rootScope.hideLoading()
              $rootScope.popups.youHaveRegistered().then(function(res){
-              $ionicViewService.nextViewOptions({
+              $ionicHistory.nextViewOptions({
                   disableBack: true
               })
-              $ionicViewService.clearHistory()
+              $ionicHistory.clearHistory()
                 $state.go('app.home-student')
              })
           },function (err){
@@ -233,10 +233,10 @@ $rootScope.tempUser={}
           RegisterS.createMasterUser($scope.tempUser).then(function(res){
             $rootScope.hideLoading()
              $rootScope.popups.youHaveRegistered().then(function(res){
-              $ionicViewService.nextViewOptions({
+              $ionicHistory.nextViewOptions({
                   disableBack: true
               })
-              $ionicViewService.clearHistory()
+              $ionicHistory.clearHistory()
                 $state.go('app.home-master')
              })
           },function (err){

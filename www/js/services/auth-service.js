@@ -122,6 +122,38 @@ angular.module("auth-service",[])
      	})
      	return d.resolve
      }
+
+     var RegistrationCompeleteSingIn = function (userData){
+     	var d =$q.defer()
+     	  window.localStorage.setItem("fullUserData",JSON.stringifiy(userData))
+          window.localStorage.setItem("authToken",userData.authToken)
+          window.localStorage.setItem("uid",userData.uid)
+          $rootScope.authToken = userData.authToken
+          $rootScope.uid = userData.uid
+          $rootScope.isLoggedIn = true
+
+          ServerComS.testAuth().then(function(res){
+          	res.success? d.resolve():d.reject()
+          },function(err){
+          	d.reject(err.message)
+          })
+     	return d.resolve
+     }
+      var logout = function (){
+ 	     var d =$q.defer()
+		 	  window.localStorage.removeItem("fullUserData")
+		      window.localStorage.removeItem("authToken")
+		      window.localStorage.removeItem("uid")
+		      $rootScope.authToken = null
+		      $rootScope.uid = null
+		      $rootScope.isLoggedIn = false
+          ServerComS.testAuth().then(function(res){
+          	res.success? d.reject():d.resolve()
+          },function(err){
+          	d.reject(err.message)
+          })
+ 	    return d.resolve
+     }
 	 return{
 	 	auth:auth,
 	 	login:login,

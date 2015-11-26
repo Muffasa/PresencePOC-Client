@@ -2,7 +2,7 @@ angular.module("home-controllers",[])
 
 .controller('MasterController',['$rootScope','$scope','$ionicFilterBar','$timeout','ServerComS','GPSS',
            function($rootScope,$scope,$ionicFilterBar,$timeout,ServerComS,GPSS){
-  $scope.$on('$ionicView.enter', function(e) {
+ // $scope.$on('$ionicView.enter', function(e) {
     $rootScope.showLoading()
       $timeout(function(){
         ServerComS.getEventsByMasterID($rootScope.mainUser.ID).then(function(res){
@@ -17,7 +17,7 @@ angular.module("home-controllers",[])
         })
       },500)
      
-  })
+  //})
 
   $scope.showFilterBar = function () {
       filterBarInstance = $ionicFilterBar.show({

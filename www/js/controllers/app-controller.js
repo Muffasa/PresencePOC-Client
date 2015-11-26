@@ -3,9 +3,9 @@ angular.module("app-controller",[])
 .controller('AppCtrl',['$scope', '$ionicModal', '$timeout','$rootScope', '$ionicUser','$ionicPush','$ionicPopup','$cordovaDevice','GPSS','LocationS',
            function($scope, $ionicModal, $timeout,$rootScope, $ionicUser,$ionicPush,$ionicPopup,$cordovaDevice,GPSS,LocationS) {
 
-  $scope.$on('$ionicView.enter', function(e) {
+  /*$scope.$on('$ionicView.enter', function(e) {
 
-  });
+  });*/
   document.addEventListener("pause", function(){
     console.log("app paused");
   }, false);

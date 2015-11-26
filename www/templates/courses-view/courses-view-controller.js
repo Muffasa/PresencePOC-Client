@@ -3,10 +3,10 @@ angular.module('view-controllers')
 .controller('CoursesViewCtrl',['$rootScope','$scope','$stateParams','$ionicContentBanner','$ionicFilterBar','ServerComS',
            function($rootScope,$scope,$stateParams,$ionicContentBanner,$ionicFilterBar,ServerComS){
 	    
-  $scope.$on('$ionicView.beforeEnter',function(){
+  //$scope.$on('$ionicView.beforeEnter',function(){
      $rootScope.showLoading()
 		   $scope.refreshEvents()
-	   })
+	   //})
 
        
    $scope.showFilterBar = function () {

@@ -3,11 +3,9 @@ angular.module('view-controllers')
 .controller('IDEnterViewCtrl',['$rootScope','$scope','ServerComs','PopupsS','NewRegS',
 	        function($rootScope,$scope,ServerComs){
                 
-	$scope.$on('$ionicView.enter',function(){
-
-	})
 
 	$scope.submitID = function(ID){
+      $rootScope.userID = ID
 		NewRegS.postID(ID).then(function(res){
             
             if(res.error){
@@ -16,27 +14,28 @@ angular.module('view-controllers')
             else if(res.invalidID){
             	PopupsS.show("The ID is invalid. Try again")
             }
-            else if(res.notRegistered){
-            	PopupsS.show("The ID is not registered in the system, please make sure you have entered it correctly.")
-            }
             else if(res.allreadyRegistered){
-            	PopupsS.confirm("This ID is allready registered, are you sure its yours?",'Yes','No').then(function(firstButton){
+            	PopupsS.confirm("This ID is allready used by another user, are you sure its yours?",'Yes','No').then(function(firstButton){
                      if(firstButton){
-                     	$state.go('regFlow.upload-ID-photo',{userBaseData:res.userBaseData})
+                     	//$state.go('regFlow.upload-ID-photo',{userBaseData:res.userBaseData})
+                        PopupsS.confirm("You can't use this ID in order to login, please upload a picture of your ID in order to resolve this issue","upload","cancel")
+                        .then(function(firstButton){
+                           //open camera
+                        })
                      	d.resolve()
                      }
             	})
             }
             else if(res.noPhoneNumber){
-            	PopupsS.confirm("This ID has no Phone number, would you like to attach?",'Yes','No').then(function(firstButton){
+            	PopupsS.confirm("This ID have no phone number attached, you must update your phone number in order to continiue.",'update','cancel').then(function(firstButton){
                      if(firstButton){
-                     	$state.go('regFlow.attach-phone',{userBaseData:res.userBaseData})
+                     	$state.go('regFlow.attach-phone')
                      	d.resolve()
                      }
             	})
             }
             else if(res.smsSent){
-            	$state.go('regFlow.SMS-validation',{userBaseData:res.userBaseData})
+            	$state.go('regFlow.SMS-validation')
             }
 
 
@@ -44,5 +43,8 @@ angular.module('view-controllers')
 			$rootScope.userBaseData = res.userBaseData
 		})
 	}
+   $scope.goToWelcomeLogin = function(){
+   $state.go('welcome.login')
+   }
 
 }]) 

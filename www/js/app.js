@@ -77,6 +77,7 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
     views: {
       'menuContent': {
         templateUrl: 'templates/registration-flow-views/ID-enter-view/ID-enter-view.html',
+        controller:'IDEnterViewCtrl'
       }
    },
   authStatus: false,
@@ -87,6 +88,16 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
     views: {
       'menuContent': {
         templateUrl: 'templates/registration-flow-views/SMS-validation-view/SMS-validation-view.html',
+      }
+   }, 
+  authStatus: false,
+  cantBackTo:true
+  })
+  .state('regFlow.choose-password', {
+    url: '/SMS-validation',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/registration-flow-views/choose-password-view/choose-password-view.html',
       }
    },
   authStatus: false,
@@ -102,7 +113,17 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
   authStatus: false,
   cantBackTo:true
   })
-  .state('regFlow.upload-ID-photo', {
+  .state('regFlow.login', {
+    url: '/regFlow.attach-phone',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/registration-flow-views/login-view/login-view.html',
+      }
+   },
+  authStatus: false,
+  cantBackTo:true
+  }) 
+  /*.state('regFlow.upload-ID-photo', {
     url: '/upload-ID-photo',
     views: {
       'menuContent': {
@@ -111,7 +132,7 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
    },
   authStatus: false,
   cantBackTo:true
-  })
+  })*/
 //--------------------------------------
 .state('welcome.phone-enter', {
     url: '/phone-enter',
@@ -153,7 +174,17 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
   authStatus: false
   })
 //--------------------------------------
-
+.state('app.home-view', {
+    url: '/home-view',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/home-view/home-view.html',
+        controller: 'HomeViewCtrl'
+      }
+   },
+  authStatus: true,
+  master: true
+  })
 .state('app.courses-view', {
     url: '/courses-view',
     views: {

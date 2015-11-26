@@ -9,19 +9,29 @@
         <div class="content">
 
                     
-                    <h3 class="text3">Welcome To Presence!</h3>
-                </div>
-            <!--<div class="app-logo"><img src="img/logo.png"></div>-->
+           <h3 class="text3">Welcome To Presence!</h3>
+
             <img class="displayed" src="img/logo.png"> 
-          
-               <h5 class="text">Plese enter you ID number:</h3>
-
                 <div class="list list-inset removePM">
-                  <label class="item item-input"><input type="text" ng-model="ID" placeholder="ID" > </label>
-                </div>
-            
+                      <div class="list-item"> 
+                          <h4 class="list-item text">Please enter your ID Number:</h4>
+                      </div>
+                            <label class="item item-input"><input type="text" ng-model="ID" placeholder="Phone Number" > </label>
+                          </div>
+                      
 
-            <div ><button  class="button button-block button-balanced" ng-click="submitID(ID)" > Next </button>  </div>
+                      <div ><button  class="button button-block button-balanced" ng-click="submitID(ID)" > Next </button>  </div>
+
+
+
+                    <div class="list-item"> 
+                          <h4 class="list-item text">Allredy a member? Login!</h4>
+                      </div>
+                      <div class="loginButton">
+                          <button class="button ion-unlocked button-block button-assertive" ng-click="goToWelcomeLogin()" > Login </button>  
+                      </div>
+                </div>
+          
       </div>
   </div>
 

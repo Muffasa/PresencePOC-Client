@@ -3,12 +3,12 @@ angular.module('view-controllers')
 .controller('CourseViewCtrl',['$rootScope','$scope','$q','$state','$stateParams','$ionicContentBanner','$timeout','GPSS','ServerComS','UserS',
 	       function($rootScope,$scope,$q,$state,$stateParams,$ionicContentBanner,$timeout,GPSS,ServerComS,UserS){
 
-	$scope.$on('$ionicView.beforeEnter',function(){
+	//$scope.$on('$ionicView.beforeEnter',function(){
 	   $rootScope.showLoading() 
 		$scope.getCourseData().finally(function(){
 			$rootScope.hideLoading()
 		})
-	})
+	//})
 		
 	$scope.getCourseData = function(){ 
 		var d = $q.defer()
