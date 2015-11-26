@@ -1,9 +1,15 @@
 
 angular.module('view-controllers')
 
-.controller('LoginViewCtrl',['$q,$rootScope','$scope','$stateParams','ServerComs','PopupsS','NewRegS',
-            function($q,$rootScope,$scope,$stateParams,ServerComs,PopupsS,NewRegS){
+.controller('LoginViewCtrl',['$q','$rootScope','$scope','$state','PopupsS','NewRegS','AuthS','$ionicHistory',
+            function($q,$rootScope,$scope,$state,PopupsS,NewRegS,AuthS,$ionicHistory){
                 $scope.isMaster = $rootScope.isMaster
+
+                $scope.$on('ionicView.beforeEnter',function(){
+                    $scope.username = ""
+                    $scope.password = ""
+                })
+                
     $scope.login = function (username,password){
         var d =$q.defer()
 
@@ -11,14 +17,18 @@ angular.module('view-controllers')
                 NewRegS.login(username,password).then(function(res){
                     if(res.success){
                         AuthS.RegistrationCompeleteSingIn(res.userData).then(function(){
-                            $state.go('app.home')
+                                              $ionicHistory.nextViewOptions({
+                                                disableBack: true
+                                              })
+                                              $ionicHistory.clearHistory()
+                                              $state.go('app.home-view')
                         },function (err){
                             //TODO LOG ERROR
                             console.log("ChoosePasswordViewCtrl=>SubmitPassword=>NewRegS.studentChoosePassword error: "+err.message)
                         })   
                     }
                     else
-                      PopupsS.show('The code you enterd is wrong. Try again','OK')  
+                      PopupsS.show('Wrong password. Try again','OK')  
                 })            
             
 

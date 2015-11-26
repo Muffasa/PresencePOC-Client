@@ -19,17 +19,7 @@
                 <div class="list list-inset removePM">
                   <label class="item item-input"><input type="text" ng-model="SMSCode" placeholder="code" > </label>
                 </div>
-                <div ng-if="isMaster" >
-
-                               <h5 class="text">The ID number you entered belong to super user, please provide your email and authentication code:</h5>
-
-                                <div class="list list-inset removePM">
-                                  <label class="item item-input"><input type="text" ng-model="authCode" placeholder="super user code" > </label>
-                                </div> 
-                                <div class="list list-inset removePM">
-                                  <label class="item item-input"><input type="email" ng-model="email" placeholder="email" > </label>
-                                </div> 
-                <div>                
+             
             
 
             <div ><button  class="button button-block button-balanced" ng-click="SubmitSMSCode(SMSCode,authCode,email)" > Next </button>  </div>

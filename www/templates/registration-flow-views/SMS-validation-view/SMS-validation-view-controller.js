@@ -1,8 +1,8 @@
 
 angular.module('view-controllers')
 
-.controller('SMSValidationViewCtrl',['$q,$rootScope','$scope','$stateParams','ServerComs','PopupsS','NewRegS',
-            function($q,$rootScope,$scope,$stateParams,ServerComs,PopupsS,NewRegS){
+.controller('SMSValidationViewCtrl',['$q','$rootScope','$scope','$state','PopupsS','NewRegS',
+            function($q,$rootScope,$scope,$state,PopupsS,NewRegS){
                 
     $scope.SubmitSMSCode = function (SMSCode){
         var d =$q.defer()
@@ -16,7 +16,9 @@ angular.module('view-controllers')
                     else
                       PopupsS.show('The code you enterd is wrong. Try again','OK')  
                 },function(err){
-                    PopupsS.show(err.message,'OK')
+                    //if(err.wrongSMS)
+                    PopupsS.show('The code you enterd is wrong. Try again','OK')
+                    //else
                 })            
 
 

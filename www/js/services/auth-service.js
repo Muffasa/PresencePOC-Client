@@ -120,12 +120,12 @@ angular.module("auth-service",[])
      	},function(err){
      		d.reject(err)
      	})
-     	return d.resolve
+     	return d.promise
      }
 
      var RegistrationCompeleteSingIn = function (userData){
      	var d =$q.defer()
-     	  window.localStorage.setItem("fullUserData",JSON.stringifiy(userData))
+     	  window.localStorage.setItem("fullUserData",JSON.stringify(userData))
           window.localStorage.setItem("authToken",userData.authToken)
           window.localStorage.setItem("uid",userData.uid)
           $rootScope.authToken = userData.authToken
@@ -133,11 +133,16 @@ angular.module("auth-service",[])
           $rootScope.isLoggedIn = true
 
           ServerComS.testAuth().then(function(res){
-          	res.success? d.resolve():d.reject()
+          	res.data.success? d.resolve():d.reject()
           },function(err){
           	d.reject(err.message)
           })
-     	return d.resolve
+	 		UserS.getUserData().then(function(){
+                       d.resolve()
+		 		},function(err){
+                   d.reject(err)
+		 		})
+     	return d.promise
      }
       var logout = function (){
  	     var d =$q.defer()
@@ -148,11 +153,11 @@ angular.module("auth-service",[])
 		      $rootScope.uid = null
 		      $rootScope.isLoggedIn = false
           ServerComS.testAuth().then(function(res){
-          	res.success? d.reject():d.resolve()
+          	res.data.success? d.reject():d.resolve()
           },function(err){
-          	d.reject(err.message)
+          	d.resolve()
           })
- 	    return d.resolve
+ 	    return d.promise
      }
 	 return{
 	 	auth:auth,
@@ -160,7 +165,9 @@ angular.module("auth-service",[])
 	 	unAuth:unAuth,
 	 	cleanLocalStorage:cleanLocalStorage,
 	 	devAuth:devAuth,
-	 	createAuthSession:createAuthSession
+	 	createAuthSession:createAuthSession,
+	 	RegistrationCompeleteSingIn:RegistrationCompeleteSingIn,
+	 	logout:logout
 	 }
    
 

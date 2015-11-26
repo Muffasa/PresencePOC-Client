@@ -88,6 +88,7 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
     views: {
       'menuContent': {
         templateUrl: 'templates/registration-flow-views/SMS-validation-view/SMS-validation-view.html',
+        controller:'SMSValidationViewCtrl'
       }
    }, 
   authStatus: false,
@@ -98,6 +99,7 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
     views: {
       'menuContent': {
         templateUrl: 'templates/registration-flow-views/choose-password-view/choose-password-view.html',
+        controller:'ChoosePasswordViewCtrl'
       }
    },
   authStatus: false,
@@ -108,16 +110,18 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
     views: {
       'menuContent': {
         templateUrl: 'templates/registration-flow-views/attach-phone-view/attach-phone-view.html',
+        controller:'AttachPhoneViewCtrl'
       }
    },
   authStatus: false,
   cantBackTo:true
   })
   .state('regFlow.login', {
-    url: '/regFlow.attach-phone',
+    url: '/regFlow.login',
     views: {
       'menuContent': {
         templateUrl: 'templates/registration-flow-views/login-view/login-view.html',
+        controller:'LoginViewCtrl'
       }
    },
   authStatus: false,
@@ -263,5 +267,5 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
   })
 ;
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/welcome/phone-enter');
+  $urlRouterProvider.otherwise('/regFlow/ID-enter');
 }]);

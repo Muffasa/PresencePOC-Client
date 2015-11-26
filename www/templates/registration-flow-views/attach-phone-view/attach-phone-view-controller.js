@@ -1,7 +1,7 @@
 angular.module('view-controllers')
 
-.controller('AttachPhoneCtrl',['$rootScope','$scope','ServerComs','PopupsS','NewRegS',
-	        function($rootScope,$scope,$stateParams,ServerComs,PopupsS,NewRegS){
+.controller('AttachPhoneViewCtrl',['$rootScope','$scope','PopupsS','NewRegS',
+	        function($rootScope,$scope,PopupsS,NewRegS){
                 
 	$rootScope.$on('userInit',function(){
 			

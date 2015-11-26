@@ -2,7 +2,7 @@ angular.module('new-registration-service', [])
 
 .factory("NewRegS",["$rootScope","$q","$http",
  function($rootScope,$q,$http){
-		//var baseUrl = 'http://46.101.206.21:8080/'
+		
 		var baseUrl = $rootScope.serverUrl
 
         var POST = function(action,data){
@@ -11,10 +11,10 @@ angular.module('new-registration-service', [])
 
 			$http.post(targetUrl,data).then(function(res){
 			//	console.log('postID POST res:'+JSON.stringify(res))
-			     d.resolve(res);
+			     d.resolve(res.data);
 			    },function(err){
-			    	console.log('server responded with error:'+err)
-			      d.reject(err);
+			    	console.log('server responded with error:'+err.message)
+			      err.data.message? d.resolve(err.data):d.reject(err)
 			    })
 		    return d.promise;
         }

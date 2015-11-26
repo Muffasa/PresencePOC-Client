@@ -2,8 +2,8 @@ angular.module("server-service",[])
 
 .factory("ServerComS",['$rootScope','$q','$http',
 	    function($rootScope,$q,$http){
-	var baseUrl = 'http://46.101.206.21:8080/';
-
+	//var baseUrl = 'http://46.101.206.21:8080/';
+           var baseUrl = $rootScope.serverUrl
 
 
         var POST = function(action,data){
@@ -11,11 +11,15 @@ angular.module("server-service",[])
             
             if(!data||!data.uid||!data.authToken)
         	if($rootScope.authToken&&$rootScope.uid){
+        		
+        		if(!data)
+        			data={}
+
 	        	data.authToken = $rootScope.authToken
 	        	data.uid = $rootScope.uid
             }
 
-			$http.post(baseUrl+action,data).then(function(res){
+			$http.post($rootScope.serverUrl+action,data).then(function(res){
 			//	console.log('ServerComs POST res:'+JSON.stringify(res))
 			     d.resolve(res);
 			    },function(err){
@@ -293,15 +297,25 @@ angular.module("server-service",[])
 		  },
 		  testAuth : function(){
 		    var d =$q.defer()
-		    var data = {token:token}
-		    POST("creatAuthSession",data).then(function(res){
+		    POST("testCredentials").then(function(res){
 		      d.resolve(res);
 		    },function(err){
 		      d.reject(err);
 		    })
  
 		    return d.promise  
-		  }   
+		  },
+		  testCredentials : function(authToken,uid){
+		    var d =$q.defer()
+		    var data = {authToken:authToken,uid:uid}
+		    POST("testCredentials",data).then(function(res){
+		      d.resolve(res);
+		    },function(err){
+		      d.reject(err);
+		    })
+ 
+		    return d.promise  
+		  }    
 	}		 
 }])
 

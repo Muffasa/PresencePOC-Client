@@ -1,7 +1,7 @@
 angular.module('view-controllers')
 
-.controller('IDEnterViewCtrl',['$rootScope','$scope','ServerComs','PopupsS','NewRegS',
-	        function($rootScope,$scope,ServerComs){
+.controller('IDEnterViewCtrl',['$rootScope','$scope','$state','PopupsS','NewRegS',
+	        function($rootScope,$scope,$state,PopupsS,NewRegS){
                 
 
 	$scope.submitID = function(ID){
@@ -44,7 +44,7 @@ angular.module('view-controllers')
 		})
 	}
    $scope.goToWelcomeLogin = function(){
-   $state.go('welcome.login')
+   $state.go('regFlow.login')
    }
 
 }]) 

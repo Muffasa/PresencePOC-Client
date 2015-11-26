@@ -1,7 +1,7 @@
 angular.module("app-controller",[])
 
-.controller('AppCtrl',['$scope', '$ionicModal', '$timeout','$rootScope', '$ionicUser','$ionicPush','$ionicPopup','$cordovaDevice','GPSS','LocationS',
-           function($scope, $ionicModal, $timeout,$rootScope, $ionicUser,$ionicPush,$ionicPopup,$cordovaDevice,GPSS,LocationS) {
+.controller('AppCtrl',['$scope', '$ionicModal', '$timeout','$rootScope', '$ionicUser','$ionicPush','$ionicPopup','$cordovaDevice','GPSS','LocationS','AuthS','$state',
+           function($scope, $ionicModal, $timeout,$rootScope, $ionicUser,$ionicPush,$ionicPopup,$cordovaDevice,GPSS,LocationS,AuthS,$state) {
 
   /*$scope.$on('$ionicView.enter', function(e) {
 
@@ -13,7 +13,12 @@ angular.module("app-controller",[])
     console.log("app resumed");
     //location.href = location.origin;
   }, false);
-      
+   
+  $scope.logout = function(){
+     AuthS.logout().then(function(){
+      $state.go('regFlow.login')
+     })
+  }    
   $scope.getLocation = function(){
     GPSS.isActive().then(function(active){
       if(!active){

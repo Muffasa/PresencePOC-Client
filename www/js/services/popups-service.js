@@ -7,7 +7,7 @@ angular.module("popups-service",[])
         var d = $q.defer()
 
                     $ionicPopup.alert({
-                        title: title? title:'Message',
+                        title:'Message',
                         template: text,
                         okText:buText
                       }).then(function(res){ 
