@@ -260,7 +260,7 @@ angular.module("server-service",[])
 		  sumbmitSMSCode : function(eventId){
 		    var d =$q.defer()
 		    var data = {eventId:eventId}
-		    POST("getAttendancesByEventId",data).then(function(res){
+		    POST("sumbmitSMSCode",data).then(function(res){
 		      d.resolve(res);
 		    },function(err){
 		      d.reject(err);
@@ -273,6 +273,18 @@ angular.module("server-service",[])
 		    var d =$q.defer()
 		    var data = {SMSCode:SMSCode,authCode:authCode,email:email}
 		    POST("sumbmitSMSCodeMaster",data).then(function(res){
+		      d.resolve(res);
+		    },function(err){
+		      d.reject(err);
+		    })
+ 
+		    return d.promise  
+		  } 
+		  ,
+		  creatAuthSession : function(token){
+		    var d =$q.defer()
+		    var data = {token:token}
+		    POST("creatAuthSession",data).then(function(res){
 		      d.resolve(res);
 		    },function(err){
 		      d.reject(err);

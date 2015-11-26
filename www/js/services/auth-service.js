@@ -111,12 +111,24 @@ angular.module("auth-service",[])
 	 }
 
 
+
+
+     var createAuthSession = function (token){
+     	var d =$q.defer()
+     	ServerComS.createAuthSession(token).then(function(user){
+     		d.resolve(user)
+     	},function(err){
+     		d.reject(err)
+     	})
+     	return d.resolve
+     }
 	 return{
 	 	auth:auth,
 	 	login:login,
 	 	unAuth:unAuth,
 	 	cleanLocalStorage:cleanLocalStorage,
-	 	devAuth:devAuth
+	 	devAuth:devAuth,
+	 	createAuthSession:createAuthSession
 	 }
    
 

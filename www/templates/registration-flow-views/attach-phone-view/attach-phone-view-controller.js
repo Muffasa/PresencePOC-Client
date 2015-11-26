@@ -1,7 +1,7 @@
 angular.module('view-controllers')
 
-.controller('AttachPhoneCtrl',['$rootScope','$scope','ServerComs','PopupsS',
-	        function($rootScope,$scope,$stateParams,ServerComs,PopupsS){
+.controller('AttachPhoneCtrl',['$rootScope','$scope','ServerComs','PopupsS','NewRegS',
+	        function($rootScope,$scope,$stateParams,ServerComs,PopupsS,NewRegS){
                 
 	$rootScope.$on('userInit',function(){
 			
@@ -10,8 +10,8 @@ angular.module('view-controllers')
 	var $scope.userData = {}
 	$scope.userData.ID=$stateParams.ID
 
-	$scope.attachPhone = function(phoneNumber,email){
-		ServerComs.attachPhoneNumberToID($stateParams.ID,phoneNumber,email).then(function(res){
+	$scope.attachPhone = function(phoneNumber){
+		NewRegS.postPhoneNumber(phoneNumber).then(function(res){
 			if(res.success){
 				$state.go('regFlow.SMS-validation')
 			}

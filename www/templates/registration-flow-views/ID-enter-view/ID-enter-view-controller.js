@@ -1,6 +1,6 @@
 angular.module('view-controllers')
 
-.controller('IDEnterViewCtrl',['$rootScope','$scope','ServerComs','PopupsS',
+.controller('IDEnterViewCtrl',['$rootScope','$scope','ServerComs','PopupsS','NewRegS',
 	        function($rootScope,$scope,ServerComs){
                 
 	$scope.$on('$ionicView.enter',function(){
@@ -8,7 +8,7 @@ angular.module('view-controllers')
 	})
 
 	$scope.submitID = function(ID){
-		ServerComs.submitID(ID).then(function(res){
+		NewRegS.postID(ID).then(function(res){
             
             if(res.error){
             	//TODO LOG ERROR
