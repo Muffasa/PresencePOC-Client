@@ -43,5 +43,16 @@
  stroke: #fff;
  color: #FFFFFF !important;
 }
+.nobound{
+  max-width: 10000000000px !important;
+  max-height: 10000000000px !important;
+}
+.forced_button-large {
+    padding:  10px !important;
+    min-width: 68px !important;
+    min-height: 59px !important;
+    font-size: 20px !important;
+    line-height: 53px !important;
+}
 
 

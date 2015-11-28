@@ -3,7 +3,7 @@ angular.module('view-controllers')
 .controller('ClassViewCtrl',['$scope','$rootScope','$stateParams','$q','$ionicContentBanner','ServerComS','GPSS','AuthS','UserS',
 	       function($scope,$rootScope,$stateParams,$q,$ionicContentBanner,ServerComS,GPSS,AuthS,UserS){
 
-	//$scope.$on('$ionicView.enter',function(){
+	$scope.$on('$ionicView.enter',function(){
 		$rootScope.showLoading()
 		if($stateParams.fromNotification){
 			navigator.splashscreen.hide()
@@ -17,7 +17,7 @@ angular.module('view-controllers')
 			$scope.initClassData()
 		}
 			
-	//})
+	})
 
 	$scope.initClassData = function(){
 		var d = $q.defer()

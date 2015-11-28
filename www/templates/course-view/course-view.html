@@ -58,9 +58,9 @@
   <ion-footer-bar class="bar-dark">
             <ion-process-spinner style="width:100%; text-align: center;" processing="spin" spinner="bubbles" css-class="spinner-balanced">
                            <div ng-if="$root.userType == 'master'">
-                             <button ng-if="!course.activeAttendanceInfo" ng-click="openAttendance(course._id)" class="button button-big icon-left ion-radio-waves button-balanced">
+                             <div  ng-if="!course.activeAttendanceInfo" ng-click="openAttendance(course._id)" class="button button-balanced forced_button-large">
                               Open New Attandance
-                            </button>
+                            </div>
                             <button ng-if="course.activeAttendanceInfo" ng-click="closeAttendance(course.activeAttendanceInfo.id)" class="button icon-left ion-android-hand button-assertive">
                               Close Attandance
                             </button>

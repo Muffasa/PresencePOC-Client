@@ -1,4 +1,12 @@
 {
   "name": "PresencePOC",
-  "app_id": "0d484823"
+  "app_id": "0d484823",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
 }

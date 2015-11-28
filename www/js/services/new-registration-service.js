@@ -7,7 +7,7 @@ angular.module('new-registration-service', [])
 
         var POST = function(action,data){
         	var d =$q.defer();
-        	var targetUrl = baseUrl+action
+        	var targetUrl = $rootScope.serverUrl+action
 
 			$http.post(targetUrl,data).then(function(res){
 			//	console.log('postID POST res:'+JSON.stringify(res))
