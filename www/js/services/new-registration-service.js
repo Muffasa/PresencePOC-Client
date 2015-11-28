@@ -40,9 +40,10 @@ angular.module('new-registration-service', [])
 		    })
 		    return d.promise 
 	  	},
-	  	validatePhoneNumber : function(smsCode,ID){
+	  	validatePhoneNumber : function(phoneNumber,smsCode,ID){
 		    var d =$q.defer()
-		    var data = {smsCode:smsCode,
+		    var data = {phoneNumber:phoneNumber,
+		    			smsCode:smsCode,
 		    			ID:ID
 		    			} 
 		    POST("validatePhoneNumber",data).then(function(res){

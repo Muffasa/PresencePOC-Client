@@ -12,25 +12,43 @@
            <h3 class="text3">Welcome To Presence!</h3>
 
             <img class="displayed" src="img/logo.png"> 
-                      <div class="list-item"> 
+              <div class="list-item"> 
                           <h4 class="list-item text3">Please enter your ID Number:</h4>
                       </div>
-                <div class="list list-inset removePM">
-                            <label class="item item-input"><input type="text" ng-model="ID" placeholder="ID Number" > </label>
-                </div>
-                      
-
-                      <div ><button  class="button button-block button-balanced" ng-click="submitID(ID)" > Next </button>  </div>
+              </div>
 
 
+
+
+              <form name="IDForm" novalidate="" ng-submit="submitID(IDForm)">
+                  <label class="item item-input" ng-class="{ 'has-error-lr' : IDForm.ID.$invalid  && IDForm.$submitted , 'valid-lr' : IDForm.ID.$valid  && IDForm.$submitted}"> 
+                    <span class="input-label">ID Number</span>  
+                    <input type="text"  
+                       name="ID"
+                       ng-model="ID"
+                       ng-minlength="9"
+                       ng-maxlength="9"
+                       ng-pattern="/^[0-9]+$/" 
+                       required>
+                      <!-- <i  class="icon ion-checkmark-circled balanced padding" ></i>-->
+                  </label>
+                        <div class="form-errors" ng-show="IDForm.ID.$error && IDForm.$submitted" ng-messages="IDForm.ID.$error"> 
+                            <div class="form-error" ng-message="minlength">ID Number must contain exactly 9 characters</div>
+                             <div class="form-error" ng-message="pattern">Invalid ID number</div>
+                            <div ng-messages-include="templates/form-errors.html"></div>
+                        </div> 
+
+                  <button type="submit" class="button icon-right ion-chevron-right button-block button-balanced">
+                  Next
+                  </button>    
+             </form>  
 
                     <div class="list-item"> 
                           <h4 class="list-item text3">Allredy a member? Login!</h4>
                     </div>
-                      <div class="loginButton">
+                    <div class="loginButton">
                           <button class="button ion-unlocked button-block button-assertive" ng-click="goToWelcomeLogin()" > Login </button>  
-                      </div>
-                </div>
+                    </div>
           
       </div>
   </div>

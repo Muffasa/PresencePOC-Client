@@ -3,7 +3,6 @@
 <!-- <ion-nav-title><img src="img/logo.png" width="40"></ion-nav-title> -->
 
   <ion-content class="padding">
-
   <div class="row responsive-sm padding remvoeBP">
       <div class="col">
         <div class="content">
@@ -11,26 +10,50 @@
                     
                     <h3 class="text3">Welcome To Presence!</h3>
                 </div>
-            <!--<div class="app-logo"><img src="img/logo.png"></div>-->
+           
             <img class="displayed" src="img/logo.png"> 
           
-               <h5 class="text">In order to change/add you phone number to {{userData.ID}} you must provide an email:</h5>
+               <h4 class="text2">In order to add your phone number, you must provide your email:</h5>
+<form name="phoneNumberForm" novalidate="" ng-submit="submitPhone(phoneNumberForm)">
+        <label class="item item-input" ng-class="{ 'has-error-lr' : phoneNumberForm.email.$invalid  && phoneNumberForm.$submitted , 'valid-lr' : phoneNumberForm.email.$valid  && phoneNumberForm.$submitted}"> 
+          <span class="input-label">Email</span>  
+          <input type="email"  
+             name="email"
+             ng-model="email" 
+             required>
+            <!-- <i  class="icon ion-checkmark-circled balanced padding" ></i>-->
+        </label>
+              <div class="form-errors" ng-show="phoneNumberForm.email.$error && phoneNumberForm.$submitted" ng-messages="phoneNumberForm.email.$error"> 
+                  <div class="form-error" ng-message="email">Your email address is invalid</div> 
+                  <div ng-messages-include="templates/form-errors.html"></div>
+              </div> 
 
-                <div class="list list-inset removePM">
-                  <label class="item item-input"><input type="email" ng-model="email" placeholder="email" > </label>
-                </div>
-                <h5 class="text">New Phone Number:</h5>
+        <label class="item item-input" ng-class="{ 'has-error-lr' : phoneNumberForm.newPhoneNumber.$invalid  && phoneNumberForm.$submitted, 'valid-lr' : phoneNumberForm.newPhoneNumber.$valid  && phoneNumberForm.$submitted}">     
+          <span class="input-label">New Phone Number</span>
+          <input type="text"
+           name="newPhoneNumber"
+           ng-model="newPhoneNumber" 
+           ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" 
+           required>
+           <i ng-show="phoneNumberForm.newPhoneNumber.$valid" class="icon ion-checkmark-circled"></i>
+        </label>  
+            <div class="form-errors"  
+               ng-show="phoneNumberForm.newPhoneNumber.$error && phoneNumberForm.$submitted"
+               ng-messages="phoneNumberForm.newPhoneNumber.$error">
+                <div class="form-error" ng-message="pattern">Must be a valid 10 digit phone number</div>
+               <div ng-messages-include="templates/form-errors.html"></div>
+            </div> 
 
-                <div class="list list-inset removePM">
-                  <label class="item item-input"><input type="text" ng-model="newPhoneNumber" placeholder="New Phone Number" > </label>
-                </div>
+        <button type="submit" class="button icon-right ion-chevron-right button-block button-balanced">
+        login
+        </button>    
+</form>            
 
-              
-            
-
-            <div ><button  class="button button-block button-balanced" ng-click="IDEnter(ID)" > Next </button>  </div>
       </div>
   </div>
+
+
+
 
             
 

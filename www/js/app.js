@@ -84,7 +84,7 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
   cantBackTo:true
   })
   .state('regFlow.SMS-validation', {
-    url: '/SMS-validation',
+    url: '/SMS-validation/:newPhoneNumber',
     views: {
       'menuContent': {
         templateUrl: 'templates/registration-flow-views/SMS-validation-view/SMS-validation-view.html',

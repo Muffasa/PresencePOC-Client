@@ -23,7 +23,7 @@ angular.module("popups-service",[])
         var d = $q.defer()
 
                     $ionicPopup.confirm({
-                        title: title? title:'Message',
+                        title:'Message',
                         template: text,
                         cancelText:bu2Text,
                         okText:bu1Text
