@@ -23,9 +23,12 @@
     {
       "locator": "https://github.com/phonegap-build/PushPlugin.git",
       "id": "com.phonegap.plugins.PushPlugin"
-    }
+    },
+    "onesignal-cordova-plugin",
+    "cordova.plugins.diagnostic"
   ],
   "cordovaPlatforms": [
+    "android",
     "ios"
   ]
 }

@@ -98,18 +98,18 @@
 <ion-footer-bar class="bar-dark myfooter">
             <ion-process-spinner style="width:100%; text-align: center;" processing="spin2" spinner="bubbles" css-class="spinner-balanced">
                 <div ng-if="$root.userType == 'master'">
-                       <button ng-if="class.active" ng-click="closeAttendance(course.activeAttendanceInfo.id)" class="button icon-left ion-android-hand button-assertive">
+                       <button ng-if="class.active" ng-click="closeAttendance(course.activeAttendanceInfo.id)" class="button icon-left ion-android-hand button-assertive forced_button-large">
                         Close Attandance
                       </button>
                     </div>
                 <div ng-if="$root.userType == 'student'">
                       <div ng-if="userAtended">
-                        <div  class="button icon-right ion-checkmark-round button-balanced button-outline">
+                        <div  class="button icon-right ion-checkmark-round button-balanced button-outline forced_button-large">
                           Successfuly Attended
                         </div>
                       </div>
                       <div ng-if="!userAtended">
-                        <button ng-if="course.activeAttendanceInfo" ng-click="studentAttending(course.activeAttendanceInfo.id)" class="button icon-left ion-compose button-balanced">
+                        <button ng-if="course.activeAttendanceInfo" ng-click="studentAttending(course.activeAttendanceInfo.id)" class="button icon-left ion-compose button-balanced forced_button-large">
                           Attend To Class
                         </button>
                       </div>

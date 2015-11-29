@@ -22,7 +22,7 @@
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-device"
-    version="1.0.1">
+    version="1.1.0">
     <name>Device</name>
     <description>Cordova Device Plugin</description>
     <license>Apache 2.0</license>
@@ -60,7 +60,6 @@
             <feature name="Device" >
                 <param name="android-package" value="org.apache.cordova.device.Device"/>
             </feature>
-            <feature name="GpsDetectionPlugin"> <param name="android-package" value="com.butterflyeffect.plugins.GPSDetectionPlugin" /> </feature>
         </config-file>
 
         <source-file src="src/android/Device.java" target-dir="src/org/apache/cordova/device" />
@@ -76,7 +75,7 @@
 
         <source-file src="src/android/Device.java" target-dir="src/org/apache/cordova/device" />
     </platform>
-
+    
     <!-- ubuntu -->
     <platform name="ubuntu">
         <header-file src="src/ubuntu/device.h" />
