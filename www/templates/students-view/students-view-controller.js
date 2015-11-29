@@ -3,12 +3,12 @@ angular.module('view-controllers')
 .controller('StudentsViewCtrl',['$rootScope','$scope','$stateParams','$timeout','$ionicFilterBar','GPSS','ServerComS',
 	       function($rootScope,$scope,$stateParams,$timeout,$ionicFilterBar,GPSS,ServerComS){
 
-	//$scope.$on('$ionicView.beforeEnter',function(){
+	$scope.$on('$ionicView.beforeEnter',function(){
 		
 		$scope.course = $rootScope.currentCourse
 	    $rootScope.showLoading() 
 		$scope.refreshStudents()
-	//})
+	})
 	
   $scope.isAttended = function(student){
   	var result = false

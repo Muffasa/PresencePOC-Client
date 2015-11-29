@@ -34,9 +34,12 @@ angular.module("PresencePOC")
               },function(err){
                 console.log('init testCredentials faild, err: '+err.message)
                 $state.go('regFlow.login')
+              }).finally(function(){
+                navigator.splashscreen.hide()
               })
             }else{
               $state.go('regFlow.ID-enter')
+              navigator.splashscreen.hide()
             }
       }, 1000);
 

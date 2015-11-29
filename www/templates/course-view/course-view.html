@@ -56,23 +56,23 @@
 
   </ion-content>
   <ion-footer-bar class="bar-dark">
-            <ion-process-spinner style="width:100%; text-align: center;" processing="spin" spinner="bubbles" css-class="spinner-balanced">
+            <ion-process-spinner style="width:100%; height:100%; text-align: center;" processing="spin" spinner="bubbles" css-class="spinner-balanced">
                            <div ng-if="$root.userType == 'master'">
                              <div  ng-if="!course.activeAttendanceInfo" ng-click="openAttendance(course._id)" class="button button-balanced forced_button-large">
                               Open New Attandance
                             </div>
-                            <button ng-if="course.activeAttendanceInfo" ng-click="closeAttendance(course.activeAttendanceInfo.id)" class="button icon-left ion-android-hand button-assertive">
+                            <button ng-if="course.activeAttendanceInfo" ng-click="closeAttendance(course.activeAttendanceInfo.id)" class="button icon-left ion-android-hand button-assertive forced_button-large">
                               Close Attandance
                             </button>
                           </div>
                           <div ng-if="$root.userType == 'student'">
                             <div ng-if="!userAttended">
-                              <button ng-if="course.activeAttendanceInfo" ng-click="studentAttending(course.activeAttendanceInfo.id)" class="button icon-left ion-compose button-balanced">
+                              <button ng-if="course.activeAttendanceInfo" ng-click="studentAttending(course.activeAttendanceInfo.id)" class="button icon-left ion-compose button-balanced forced_button-large">
                                 Attend To Most Recent Class
                               </button>
                             </div>
                           <div ng-if="userAttended">
-                            <div  class="button icon-right ion-checkmark-round button-balanced button-outline">
+                            <div  class="button icon-right ion-checkmark-round button-balanced button-outline forced_button-large">
                               Successfuly Attended To Most Recent Class
                             </div>
                           </div>

@@ -4,6 +4,8 @@ angular.module('view-controllers')
 .controller('ChoosePasswordViewCtrl',['$q','$rootScope','$scope','$state','PopupsS','NewRegS','AuthS','$ionicHistory',
             function($q,$rootScope,$scope,$state,PopupsS,NewRegS,AuthS,$ionicHistory){
                 $scope.isMaster = $rootScope.isMaster
+                $scope.password = ""
+                $scope.confirm = ""
         $scope.submitPassword = function (form){//password,confirm,masterActivationCode){
        if(!form.$valid)
               return
