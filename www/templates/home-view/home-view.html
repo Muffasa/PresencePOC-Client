@@ -1,15 +1,79 @@
 
 
-<ion-view view-title="Home" class="loginBg">
+<ion-view view-title="Profile" class="loginBg">
 <ion-nav-buttons side="right">
         <button id="leftMenu" class="button button-icon button-clear ion-navicon" menu-toggle="right"></button>
       </ion-nav-buttons>
   <ion-content >
 
-        <ion-refresher class="refreshStyle"
+      <ion-refresher class="refreshStyle"
         pulling-text="Refresh Course Details..."
         on-refresh="refresh()">
       </ion-refresher>
+    <div class="list padding">
+
+
+
+              <div class='item item-devider item-button-right'>Personal Info:
+                    <button ng-click="showLocationOnMap()" class="button button-positive">
+                      Edit
+                    </button>  
+              </div>
+
+             
+                  <a class="item item-icon-left ">
+                    <i class="icon ion-university"></i> 
+                    Name:
+                   <span class="item-note">  
+                      {{mainUser.fullName}}
+                    </span>              
+                  </a>
+                  <a class="item item-icon-left ">
+                    <i class="icon ion-person"></i> 
+                    ID Number:
+                   <span class="item-note">  
+                          {{mainUser.ID}}          
+                   </span>              
+                  </a>
+                  <a class="item item-icon-left ">
+                    <i class="icon ion-android-phone-portrait"></i> 
+                    Phone Number:
+                   <span class="item-note">  
+                      {{mainUser.phoneNumber}}
+                    </span>              
+                  </a>
+                  <a class="item item-icon-left  ">
+                    <i class="icon ion-at"></i>
+                    Email:
+                    <span class="item-note">  
+                      {{mainUser.email}}
+                    </span>
+        
+                  </a>
+
+              <div class='item item-devider'>Organization Info: (TBD)</div> 
+                   <div class="item item-icon-left ">
+                    <i class="icon ion-ios-bookmarks"></i>
+                   Courses
+                    <span class="item-note">
+                      {{course.name}}     
+                    </span>
+                  </div>
+                  <a class="item item-icon-left ">
+                    <i class="icon ion-calendar"></i> 
+                    Classes attended: (example)
+                    <span class="badge badge-balanced">21/23</span>                
+                  </a>
+                  <a class="item item-icon-left ">
+                    <i class="icon ion-document-text"></i>
+                    Exams&Grades 
+                   <span class="item-note"> 
+                      <div> Exams study material references and grades </div>
+                    </span>           
+                  </a>   
+
+  </div>       
+
 
   </ion-content>
   <ion-footer-bar class="bar-dark">
