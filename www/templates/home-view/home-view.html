@@ -14,7 +14,10 @@
   </ion-content>
   <ion-footer-bar class="bar-dark">
             <ion-process-spinner style="width:100%; text-align: center;" processing="spin" spinner="bubbles" css-class="spinner-balanced my-spinner">
-<button ng-click="spinIt()" class="button button-positive button-large icon-left ion-alert-circled">Tap me!</button>
+                             <a  ng-if="!course.activeAttendanceInfo" href="" ng-click="spinIt()" class="button button-balanced my-button">
+                              Open New Attandance
+                              <i class="icon ion-ionic my-icon"> </i>
+                            </a>
             </ion-process-spinner>
 
 </ion-footer-bar>
