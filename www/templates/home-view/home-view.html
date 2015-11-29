@@ -1,9 +1,22 @@
-    
-<ion-view view-title="Home">
-         <div class="list"> 
-           <div class="padding">
-              <h5>Home View!!!<h5>
-           </div>
-         </div>
-      </ion-content>
-</ion-view> 
+
+
+<ion-view view-title="Home" class="loginBg">
+<ion-nav-buttons side="right">
+        <button id="leftMenu" class="button button-icon button-clear ion-navicon" menu-toggle="right"></button>
+      </ion-nav-buttons>
+  <ion-content >
+
+        <ion-refresher class="refreshStyle"
+        pulling-text="Refresh Course Details..."
+        on-refresh="refresh()">
+      </ion-refresher>
+
+  </ion-content>
+  <ion-footer-bar class="bar-dark">
+            <ion-process-spinner style="width:100%; text-align: center;" processing="spin" spinner="bubbles" css-class="spinner-balanced my-spinner">
+<button ng-click="spinIt()" class="button button-positive button-large icon-left ion-alert-circled">Tap me!</button>
+            </ion-process-spinner>
+
+</ion-footer-bar>
+</ion-view>
+

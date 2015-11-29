@@ -55,4 +55,17 @@
     line-height: 53px !important;
 }
 
+.my-icon:before,
+.my-icon {
+  font-size: 60px !important;
+  display: block !important;
+}
+
+.my-spinner svg {
+  width: 70px !important;
+  height: 70px !important;
+  //stroke: #444;
+  //fill: #444;
+}
+
 
