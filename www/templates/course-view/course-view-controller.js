@@ -19,7 +19,7 @@ angular.module('view-controllers')
 	          if(response.data.activeAttendanceInfo){
 	                $scope.endTime = new Date(response.data.activeAttendanceInfo.ClosingTime)
 	          	}
-	          
+	           
 	          if($rootScope.userType == 'student'){
 	          	UserS.getUserData().then(function(){
 	          	$scope.checkForStudentAttendance()
