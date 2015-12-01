@@ -9,34 +9,55 @@ angular.module("GPS-service",[])
   
   var isActive =function(){
 			var d =$q.defer();
-
-            Diagnostic.isGpsLocationEnabled(function(success){
+		if(Device.platform === 'android'){
+            cordova.plugins.diagnostic.isGpsLocationEnabled(function(success){
 			      success==0? d.resolve(false):d.resolve(true);
 			    },function(error){
 			      d.reject(error);
 			    })
+        }
+		else{
+            cordova.plugins.diagnostic.isLocationEnabled(function(success){
+			      success==0? d.resolve(false):d.resolve(true);
+			    },function(error){
+			      d.reject(error);
+			    })
+        }
 
 				return d.promise;
 		};
   var goToSettings =function(){
-
-			Diagnostic.switchToLocationSettings(function(success){console.log("worked, where it goes back to? this is success anyways:" +success)},function(error){console.log(error)});
+  			if(Device.platform === 'android')
+				cordova.plugins.diagnostic.switchToLocationSettings(function(success){console.log("worked, where it goes back to? this is success anyways:" +success)},function(error){console.log(error)});
+			else
+				cordova.plugins.diagnostic.switchToSettings(function(success){console.log("worked, where it goes back to? this is success anyways:" +success)},function(error){console.log(error)});
 		};
   function init () {
   	 isActive = function(){
 			var d =$q.defer();
 
-            Diagnostic.isLocationEnabledSetting(function(success){
+		if(Device.platform === 'android'){
+            cordova.plugins.diagnostic.isGpsLocationEnabled(function(success){
 			      success==0? d.resolve(false):d.resolve(true);
 			    },function(error){
 			      d.reject(error);
 			    })
-
+        }
+		else{
+            cordova.plugins.diagnostic.isLocationEnabled(function(success){
+			      success==0? d.resolve(false):d.resolve(true);
+			    },function(error){
+			      d.reject(error);
+			    })
+        }
 				return d.promise;
 		};
 	 goToSettings = function(){
 
-			Diagnostic.switchToLocationSettings(function(success){console.log("worked, where it goes back to? this is success anyways:" +success)},function(error){console.log(error)});
+  			if(Device.platform === 'android')
+				cordova.plugins.diagnostic.switchToLocationSettings(function(success){console.log("worked, where it goes back to? this is success anyways:" +success)},function(error){console.log(error)});
+			else
+				cordova.plugins.diagnostic.switchToSettings(function(success){console.log("worked, where it goes back to? this is success anyways:" +success)},function(error){console.log(error)});
 		};
   }
 
