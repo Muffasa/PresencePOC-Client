@@ -10,7 +10,7 @@ angular.module("GPS-service",[])
   var isActive =function(){
 			var d =$q.defer();
 
-            Diagnostic.isLocationEnabledSetting(function(success){
+            Diagnostic.isGpsLocationEnabled(function(success){
 			      success==0? d.resolve(false):d.resolve(true);
 			    },function(error){
 			      d.reject(error);

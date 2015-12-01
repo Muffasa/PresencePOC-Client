@@ -6,7 +6,7 @@ angular.module("PresencePOC")
         document.addEventListener('deviceready', function () {
 
 
-
+ 
 
 navigator.geolocation.getAccurateCurrentPosition = function (geolocationSuccess, geolocationError, geoprogress, options) {
     var lastCheckedPosition,
