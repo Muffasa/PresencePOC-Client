@@ -1,8 +1,7 @@
 angular.module("app-controller",[])
 
-.controller('AppCtrl',['$scope', '$ionicModal', '$timeout','$rootScope', '$ionicUser','$ionicPush','$ionicPopup','$cordovaDevice','GPSS','LocationS','AuthS','$state',
-           function($scope, $ionicModal, $timeout,$rootScope, $ionicUser,$ionicPush,$ionicPopup,$cordovaDevice,GPSS,LocationS,AuthS,$state) {
-
+.controller('AppCtrl',['$scope', '$ionicModal', '$timeout','$rootScope', '$ionicUser','$ionicPopup','$cordovaDevice','GPSS','LocationS','AuthS','$state',
+           function($scope, $ionicModal, $timeout,$rootScope, $ionicUser,$ionicPopup,$cordovaDevice,GPSS,LocationS,AuthS,$state) {
   /*$scope.$on('$ionicView.enter', function(e) {
 
   });*/

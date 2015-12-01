@@ -6,6 +6,7 @@ angular.module('new-registration-service', [])
 		var baseUrl = $rootScope.serverUrl
 
         var POST = function(action,data){
+        	$rootScope.showLoading()
         	var d =$q.defer();
         	var targetUrl = $rootScope.serverUrl+action
 
@@ -15,7 +16,7 @@ angular.module('new-registration-service', [])
 			    },function(err){
 			    	console.log('server responded with error:'+err.message)
 			      err.data.message? d.resolve(err.data):d.reject(err)
-			    })
+			    }).finally(function(){$rootScope.hideLoading()})
 		    return d.promise;
         }
 

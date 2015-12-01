@@ -20,12 +20,7 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "com.ionic.keyboard",
-    {
-      "locator": "https://github.com/phonegap-build/PushPlugin.git",
-      "id": "com.phonegap.plugins.PushPlugin"
-    },
-    "onesignal-cordova-plugin",
-    "cordova.plugins.diagnostic"
+    "onesignal-cordova-plugin"
   ],
   "cordovaPlatforms": [
     "ios",

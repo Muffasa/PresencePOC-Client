@@ -7,6 +7,7 @@ angular.module("PresencePOC")
    //AuthS.cleanLocalStorage()
 
    $ionicPlatform.ready(function(){
+    navigator.splashscreen.show()
     $rootScope.serverUrl= 'https://node-dev-env1-muffasa.c9users.io:8080/'
     $rootScope.settingsRadius = 50
     $rootScope.settingsUpTime = 15 

@@ -96,9 +96,9 @@
 
   </ion-content>
 <ion-footer-bar class="bar-dark myfooter">
-            <ion-process-spinner style="width:100%; text-align: center;" processing="spin2" spinner="bubbles" css-class="spinner-balanced">
+            <ion-process-spinner style="width:100%; text-align: center;" processing="spin2" spinner="bubbles" css-class="spinner-balanced my-spinner">
                 <div ng-if="$root.userType == 'master'">
-                             <a  ng-if="!course.activeAttendanceInfo" href="" ng-click="closeAttendance(course.activeAttendanceInfo.id)" class="button button-assertive my-button">
+                             <a  ng-if="course.activeAttendanceInfo" href="" ng-click="closeAttendance(course.activeAttendanceInfo.id)" class="button button-assertive my-button">
                               Close Attandance
                               <i class="icon ion-android-hand my-icon"> </i>
                             </a>                  

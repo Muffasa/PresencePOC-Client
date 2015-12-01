@@ -27,6 +27,7 @@ angular.module('view-controllers')
                                                 disableBack: true
                                               })
                                               $ionicHistory.clearHistory()
+                                              $ionicHistory.clearCache()
                                               $state.go('app.home-view')
                         },function (err){
                             //TODO LOG ERROR
