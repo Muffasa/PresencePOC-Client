@@ -70,13 +70,13 @@
                           <div ng-if="$root.userType == 'student'">
                             <div ng-if="!userAttended">
                              <a  ng-if="course.activeAttendanceInfo" href="" ng-click="studentAttending(course.activeAttendanceInfo.id)" class="button button-balanced my-button">
-                              Attend To Most Recent Class
+                              Attend To Recent Class
                               <i class="icon ion-compose my-icon"> </i>
                             </a>                              
                             </div>
                           <div ng-if="userAttended">
                              <a  ng-if="!course.activeAttendanceInfo" href="" class="button button-outline button-balanced my-button">
-                              Successfuly Attended To Most Recent Class
+                               Attended To Recent Class
                               <i class="icon ion-checkmark-round my-icon"> </i>
                             </a>                             
                           </div>
