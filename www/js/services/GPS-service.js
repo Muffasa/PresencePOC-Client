@@ -15,7 +15,7 @@ angular.module("GPS-service",[])
 			    },function(error){
 			      d.reject(error);
 			    })
-        }
+        } 
 		else{
             cordova.plugins.diagnostic.isLocationEnabled(function(success){
 			      success==0? d.resolve(false):d.resolve(true);
