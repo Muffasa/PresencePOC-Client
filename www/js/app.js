@@ -6,6 +6,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-loader','jett.ionic.filter.bar','jett.ionic.content.banner','ionicProcessSpinner','ngCordova','ngMessages','ionic.service.core'])
 
+.constant('serverUrl','@@serverUrl')
+
 .run(['$ionicPlatform','$rootScope','$timeout',
      function($ionicPlatform,$rootScope,$timeout) {
   $ionicPlatform.ready(function() {

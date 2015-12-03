@@ -13,10 +13,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"PushPlugin\"><param name=\"ios-package\" value=\"PushPlugin\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
                             "count": 1
                         },
@@ -29,11 +25,11 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"OneSignalPush\"><param name=\"ios-package\" value=\"OneSignalPush\" /></feature>",
+                            "xml": "<feature name=\"Diagnostic\"><param name=\"ios-package\" value=\"Diagnostic\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Diagnostic\"><param name=\"ios-package\" value=\"Diagnostic\" /></feature>",
+                            "xml": "<feature name=\"OneSignalPush\"><param name=\"ios-package\" value=\"OneSignalPush\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -42,12 +38,6 @@
             "framework": {
                 "parents": {
                     "CoreGraphics.framework": [
-                        {
-                            "xml": false,
-                            "count": 1
-                        }
-                    ],
-                    "SystemConfiguration.framework": [
                         {
                             "xml": false,
                             "count": 1
@@ -76,6 +66,12 @@
                             "xml": false,
                             "count": 1
                         }
+                    ],
+                    "SystemConfiguration.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
                     ]
                 }
             },
@@ -95,9 +91,6 @@
         "com.ionic.keyboard": {
             "PACKAGE_NAME": "com.ionicframework.presencepoc480913"
         },
-        "com.phonegap.plugins.PushPlugin": {
-            "PACKAGE_NAME": "com.ionicframework.presencepoc480913"
-        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.ionicframework.presencepoc480913"
         },
@@ -110,10 +103,10 @@
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.ionicframework.presencepoc480913"
         },
-        "onesignal-cordova-plugin": {
-            "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-        },
         "cordova.plugins.diagnostic": {
+            "PACKAGE_NAME": "com.ionicframework.presencepoc480913"
+        },
+        "onesignal-cordova-plugin": {
             "PACKAGE_NAME": "com.ionicframework.presencepoc480913"
         }
     },
