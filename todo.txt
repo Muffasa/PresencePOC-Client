@@ -1,17 +1,24 @@
 to do:
+
+-- security:
+- UUID user bind
+- avoid fake gps location
+
+
+
+
+
 1. open map button
 2. class calendar view
-3. detect fake location
-3.5. ion content banner done!
-3.6 fix loading done!
-3.7 resend notifications
-3.7.1 singIn flow prefect
-3.7.2 login flow
-3.7.3 attend from notification
-3.7.5 ios build!
 
+3.7 resend notifications?
+7. send notifications only to not attendend students
 
 4.secure auth
 5.webClient
 6.excel dashboard
-7. send notifications only to not attendend students
+
+
+
+-- clean up the appliction
+-- bluetooth integration
