@@ -9,7 +9,7 @@ angular.module("GPS-service",[])
   
   var isActive =function(){
 			var d =$q.defer();
-		if(device.platform === "android"){
+		if(device.platform === "Android"){
             cordova.plugins.diagnostic.isGpsLocationEnabled(function(success){
 			      success==0? d.resolve(false):d.resolve(true);
 			    },function(error){
@@ -27,7 +27,7 @@ angular.module("GPS-service",[])
 				return d.promise;
 		};
   var goToSettings =function(){
-  			if(device.platform === "android")
+  			if(device.platform === "Android")
 				cordova.plugins.diagnostic.switchToLocationSettings(function(success){console.log("worked, where it goes back to? this is success anyways:" +success)},function(error){console.log(error)});
 			else
 				cordova.plugins.diagnostic.switchToSettings(function(success){console.log("worked, where it goes back to? this is success anyways:" +success)},function(error){console.log(error)});
@@ -36,7 +36,7 @@ angular.module("GPS-service",[])
   	 isActive = function(){
 			var d =$q.defer();
 
-		if(device.platform === "android"){
+		if(device.platform === "Android"){
             cordova.plugins.diagnostic.isGpsLocationEnabled(function(success){
 			      success==0? d.resolve(false):d.resolve(true);
 			    },function(error){
@@ -54,7 +54,7 @@ angular.module("GPS-service",[])
 		};
 	 goToSettings = function(){
 
-  			if(device.platform === "android")
+  			if(device.platform === "Android")
 				cordova.plugins.diagnostic.switchToLocationSettings(function(success){console.log("worked, where it goes back to? this is success anyways:" +success)},function(error){console.log(error)});
 			else
 				cordova.plugins.diagnostic.switchToSettings(function(success){console.log("worked, where it goes back to? this is success anyways:" +success)},function(error){console.log(error)});

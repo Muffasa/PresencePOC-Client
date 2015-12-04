@@ -1,8 +1,8 @@
 
 angular.module('view-controllers')
 
-.controller('LoginViewCtrl',['$q','$rootScope','$scope','$state','PopupsS','NewRegS','AuthS','$ionicHistory',
-            function($q,$rootScope,$scope,$state,PopupsS,NewRegS,AuthS,$ionicHistory){
+.controller('LoginViewCtrl',['$q','$rootScope','$scope','$state','PopupsS','UserS','NewRegS','$ionicHistory',
+            function($q,$rootScope,$scope,$state,PopupsS,UserS,NewRegS,$ionicHistory){
                 $scope.isMaster = $rootScope.isMaster
 
                 $scope.$on('ionicView.beforeEnter',function(){
@@ -16,7 +16,7 @@ angular.module('view-controllers')
             
                 NewRegS.login(username,password).then(function(res){
                     if(res.success){
-                        AuthS.RegistrationCompeleteSingIn(res.userData).then(function(){
+                        UserS.RegistrationCompeleteSingIn(res.userData).then(function(){
                                               $ionicHistory.nextViewOptions({
                                                 disableBack: true
                                               })

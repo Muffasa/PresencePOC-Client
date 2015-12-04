@@ -30,123 +30,32 @@ angular.module("server-service",[])
         }
 	
 	return{
-		sendPhoneNumberToServer : function(tempUser){
-		    var d =$q.defer()
-		    var data = {MPN:tempUser.MPN} 
-		    POST("tempUserSingUp",data).then(function(res){
-		      d.resolve(res);
-		    },function(err,test){
-		      d.reject(err);
-		    })
+		//all the requests here must be authorized
+		testCredentials : function(authToken,uid){
+			    var d =$q.defer()
+			    var data = {authToken:authToken,uid:uid}
+			    POST("testCredentials",data).then(function(res){
+			      d.resolve(res);
+			    },function(err){
+			      d.reject(err);
+			    })
+	 
+			    return d.promise  
+			},
+	   	    getUserCredentialsByAuth : function(data){
+			    var d =$q.defer()
+			    POST("getUserCredentialsByAuth",data).then(function(res){
+			      d.resolve(res);
+			    },function(err){
+			      d.reject(err);
+			    })
+			    return d.promise
+		    },
 
-		    return d.promise 
-		  },
-		  sendIDToServer : function(ID){
-		    var d =$q.defer()
-		    var data = {ID:ID} 
-		    POST("IDEvaluation",data).then(function(res){
-		      d.resolve(res);
-		    },function(err){
-		      d.reject(err);
-		    })
 
-		    return d.promise 
-		  },
-		validateSmsCode: function(tempUser,code){
-		    var d =$q.defer()
-		    var data = {MPN:tempUser.MPN,smsCode:code}
-		    POST("validatePhoneNumber",data).then(function(res){
-		       d.resolve(res);
-		    },function(err){
-		      d.reject(err);
-		    })
 
-		    return d.promise
-		  },
-	    createStudentUser : function(student){
-		    var d =$q.defer()
-		    var data = {student:student,MPN:JSON.parse(window.localStorage.getItem('MPN'))}
-		    POST("studentSingUp",data).then(function(res){
-		      d.resolve(res);
-		    },function(err){
-		      d.reject(err);
-		    })
-
-		    return d.promise
-		  },
-	    createMasterUser : function(master){
-		    var d =$q.defer()
-		    var data = {master:master,MPN:JSON.parse(window.localStorage.getItem('MPN'))}
-		    POST("masterSingUp",data).then(function(res){
-		      d.resolve(res);
-		    },function(err){
-		      d.reject(err);
-		    })
- 
-		    return d.promise
-		  },
-	    getUserCredentials : function(MPN,password){
-		    var d =$q.defer()
-		    var data = {MPN:MPN,hashedPassword:password}
-		    POST("getUserCredentials",data).then(function(res){
-		      console.log("user now capable of communiction with the server as "+ res.data.clientType)
-		      d.resolve(res);
-		    },function(err){
-		      d.reject(err);
-		    })
-
-		    return d.promise
-		  },
-
-		/////////////Require Auth (uid and authToken)
-		
-	    getUserCredentialsByAuth : function(data){
-		    var d =$q.defer()
-		    //var data = {uid:uid,authToken:authToken}
-		    POST("getUserCredentialsByAuth",data).then(function(res){
-		      //todo this rout in server, if user logged in, new session
-		      d.resolve(res);
-		    },function(err){
-		      d.reject(err);
-		    })
-
-		    return d.promise
-		  },  
-	    validateAuth : function(data){
-		    var d =$q.defer()
-		    //var data = {uid:uid,authToken:authToken}//any request to the server must contains this properties
-		    POST("validateAuth",data).then(function(res){
-		      console.log("Auth validated " + res)
-		      d.resolve(res);
-		    },function(err){
-		      d.reject(err);
-		    })
-
-		    return d.promise
-		  },
-	    getEventsByMasterID : function(ID){
-		    var d =$q.defer()
-		    var data = {ID:ID}
-		    POST("getEventsByMasterID",data).then(function(res){
-		      d.resolve(res);
-		    },function(err){
-		      d.reject(err);
-		    })
- 
-		    return d.promise  
-		  },
-		  getEventById : function(id){
-		    var d =$q.defer()
-		    var data = {eventId:id}
-		    POST("getEventById",data).then(function(res){
-		      d.resolve(res);
-		    },function(err){
-		      d.reject(err);
-		    })
- 
-		    return d.promise  
-		  },
-		  getEventsById : function(id){
+		    //courses
+   		    getEventsById : function(id){
 		    var d =$q.defer()
 		    var data = {eventId:id}
 		    POST("getUserEvents",data).then(function(res){
@@ -155,6 +64,18 @@ angular.module("server-service",[])
 		      d.reject(err);
 		    })
   
+		    return d.promise  
+		   }, 
+		   //course
+		   getEventById : function(id){
+		    var d =$q.defer()
+		    var data = {eventId:id}
+		    POST("getEventById",data).then(function(res){
+		      d.resolve(res);
+		    },function(err){
+		      d.reject(err);
+		    })
+ 
 		    return d.promise  
 		  },
 		  startAttendance : function(eventId,geoLocation,radius,date,upTime){
@@ -179,17 +100,6 @@ angular.module("server-service",[])
  
 		    return d.promise  
 		  },
-		  studentAttending : function(attendanceId,geoLocation){
-		    var d =$q.defer()
-		    var data = {attendanceId:attendanceId,geoLocation:geoLocation}
-		    POST("studentAttending",data).then(function(res){
-		      d.resolve(res);
-		    },function(err){
-		      d.reject(err);
-		    })
- 
-		    return d.promise   
-		  },
 		  masterAttendStudent : function(studentId,attendanceId,date){
 		    var d =$q.defer()
 		    
@@ -201,7 +111,31 @@ angular.module("server-service",[])
 		    })
  
 		    return d.promise  
+		  },		  
+		  studentAttending : function(attendanceId,geoLocation){ //also in class-view
+		    var d =$q.defer()
+		    var data = {attendanceId:attendanceId,geoLocation:geoLocation}
+		    POST("studentAttending",data).then(function(res){
+		      d.resolve(res);
+		    },function(err){
+		      d.reject(err);
+		    })
+ 
+		    return d.promise   
 		  },
+		  //classes
+		  getClassesByCourseId : function(eventId){
+		    var d =$q.defer()
+		    var data = {eventId:eventId}
+		    POST("getAttendancesByEventId",data).then(function(res){
+		      d.resolve(res);
+		    },function(err){
+		      d.reject(err);
+		    })
+ 
+		    return d.promise  
+		  },
+          //class
 		  getAttendanceById : function(attendanceId){
 		    var d =$q.defer()
 		    var data = {attendanceId:attendanceId}
@@ -223,99 +157,7 @@ angular.module("server-service",[])
 		    })
  
 		    return d.promise  
-		  },
-		  getClassesByCourseId : function(eventId){
-		    var d =$q.defer()
-		    var data = {eventId:eventId}
-		    POST("getAttendancesByEventId",data).then(function(res){
-		      d.resolve(res);
-		    },function(err){
-		      d.reject(err);
-		    })
- 
-		    return d.promise  
-		  }
-
-		  ,
-		  submitID : function(ID){
-		    var d =$q.defer()
-		    var data = {ID:ID}
-		    POST("submitID",data).then(function(res){
-		      d.resolve(res);
-		    },function(err){
-		      d.reject(err);
-		    })
- 
-		    return d.promise  
-		  } 
-		  ,
-		  attachPhoneNumberToID : function(ID,phoneNumber,email){
-		    var d =$q.defer()
-		    var data = {ID:ID,phoneNumber:phoneNumber,email:email}
-		    POST("attachPhoneNumberToID",data).then(function(res){
-		      d.resolve(res);
-		    },function(err){
-		      d.reject(err);
-		    })
- 
-		    return d.promise  
-		  } 
-		  ,
-		  sumbmitSMSCode : function(eventId){
-		    var d =$q.defer()
-		    var data = {eventId:eventId}
-		    POST("sumbmitSMSCode",data).then(function(res){
-		      d.resolve(res);
-		    },function(err){
-		      d.reject(err);
-		    })
- 
-		    return d.promise  
-		  }       
-		  ,
-		  sumbmitSMSCodeMaster : function(SMSCode,authCode,email){
-		    var d =$q.defer()
-		    var data = {SMSCode:SMSCode,authCode:authCode,email:email}
-		    POST("sumbmitSMSCodeMaster",data).then(function(res){
-		      d.resolve(res);
-		    },function(err){
-		      d.reject(err);
-		    })
- 
-		    return d.promise  
-		  },
-		  creatAuthSession : function(token){
-		    var d =$q.defer()
-		    var data = {token:token}
-		    POST("creatAuthSession",data).then(function(res){
-		      d.resolve(res);
-		    },function(err){
-		      d.reject(err);
-		    })
- 
-		    return d.promise  
-		  },
-		  testAuth : function(){
-		    var d =$q.defer()
-		    POST("testCredentials").then(function(res){
-		      d.resolve(res);
-		    },function(err){
-		      d.reject(err);
-		    })
- 
-		    return d.promise  
-		  },
-		  testCredentials : function(authToken,uid){
-		    var d =$q.defer()
-		    var data = {authToken:authToken,uid:uid}
-		    POST("testCredentials",data).then(function(res){
-		      d.resolve(res);
-		    },function(err){
-		      d.reject(err);
-		    })
- 
-		    return d.promise  
-		  }    
+		  }		  
 	}		 
 }])
 

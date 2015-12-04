@@ -21,9 +21,9 @@ angular.module('new-registration-service', [])
         }
 
 	return{ 
-	  	postID : function(ID){
+	  	postID : function(ID,UUID){
 		    var d =$q.defer()
-		    var data = {ID:ID} 
+		    var data = {ID:ID,UUID:UUID} 
 		    POST("IDEvaluation",data).then(function(res){
 		      d.resolve(res);
 		    },function(err,test){
@@ -54,7 +54,7 @@ angular.module('new-registration-service', [])
 		    })
 		    return d.promise 
 	  	},
-	  	studentChoosePassword : function(password,ID){
+	  	studentChoosePassword : function(password,ID){ //creates student user with provided password
 		    var d =$q.defer()
 		    var data = {hashedPassword:password,ID:ID} 
 		    POST("studentChoosePassword",data).then(function(res){
@@ -64,22 +64,13 @@ angular.module('new-registration-service', [])
 		    })
 		    return d.promise 
 	  	},
-	  	masterChoosePassword : function(password,masterActivationCode,ID){
+	  	masterChoosePassword : function(password,masterActivationCode,ID){//creates master user with provided password
 		    var d =$q.defer()
 		    var data = {hashedPassword:password,
 		    			masterActivationCode:masterActivationCode,
 		    			ID:ID
 		    		   } 
 		    POST("masterChoosePassword",data).then(function(res){
-		      d.resolve(res);
-		    },function(err,test){
-		      d.reject(err);
-		    })
-		    return d.promise 
-	  	},
-	  	test : function(data){
-		    var d =$q.defer()
-		    POST("test2",data).then(function(res){
 		      d.resolve(res);
 		    },function(err,test){
 		      d.reject(err);

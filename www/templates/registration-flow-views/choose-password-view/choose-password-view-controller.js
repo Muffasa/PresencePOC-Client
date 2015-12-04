@@ -1,8 +1,8 @@
 
 angular.module('view-controllers')
 
-.controller('ChoosePasswordViewCtrl',['$q','$rootScope','$scope','$state','PopupsS','NewRegS','AuthS','$ionicHistory',
-            function($q,$rootScope,$scope,$state,PopupsS,NewRegS,AuthS,$ionicHistory){
+.controller('ChoosePasswordViewCtrl',['$q','$rootScope','$scope','$state','PopupsS','NewRegS','UserS','$ionicHistory',
+            function($q,$rootScope,$scope,$state,PopupsS,NewRegS,UserS,$ionicHistory){
                 $scope.isMaster = $rootScope.isMaster
                 $scope.password = ""
                 $scope.confirm = ""
@@ -22,7 +22,7 @@ angular.module('view-controllers')
             if(!$rootScope.isMaster){
                 NewRegS.studentChoosePassword(password,$rootScope.userID).then(function(res){
 
-                        AuthS.RegistrationCompeleteSingIn(res.userData).then(function(){
+                        UserS.RegistrationCompeleteSingIn(res.userData).then(function(){
                                               $ionicHistory.nextViewOptions({
                                                 disableBack: true
                                               })
@@ -43,7 +43,7 @@ angular.module('view-controllers')
                     if(res.faild)
                         return PopupsS.show(res.message,'OK') 
 
-                        AuthS.RegistrationCompeleteSingIn(res.userData).then(function(){
+                        UserS.RegistrationCompeleteSingIn(res.userData).then(function(){
                                               $ionicHistory.nextViewOptions({
                                                 disableBack: true
                                               })

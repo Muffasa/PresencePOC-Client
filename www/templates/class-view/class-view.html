@@ -114,7 +114,7 @@
                         </div>-->
                       </div>
                       <div ng-if="!userAtended">
-                             <a  ng-if="course.activeAttendanceInfo" href="" class="button button-balanced my-button">
+                             <a  ng-if="course.activeAttendanceInfo" href="" ng-click="studentAttending(course.activeAttendanceInfo.id)" class="button button-balanced my-button">
                               Attend To Class
                               <i class="icon ion-compose my-icon"> </i>
                             </a>                         

@@ -1,17 +1,23 @@
 angular.module('view-controllers')
 
-.controller('ClassViewCtrl',['$scope','$rootScope','$stateParams','$q','$ionicContentBanner','ServerComS','GPSS','AuthS','UserS',
-	       function($scope,$rootScope,$stateParams,$q,$ionicContentBanner,ServerComS,GPSS,AuthS,UserS){
+.controller('ClassViewCtrl',['$scope','$rootScope','$stateParams','$q','$timeout','$ionicContentBanner','ServerComS','GPSS','UserS',
+	       function($scope,$rootScope,$stateParams,$q,$timeout,$ionicContentBanner,ServerComS,GPSS,UserS){
 
 	$scope.$on('$ionicView.enter',function(){
 		$rootScope.showLoading()
 		if($stateParams.fromNotification){
 			navigator.splashscreen.hide()
-           AuthS.auth(true).then(function(){
-           	$scope.initClassData().then(function(){
-			    $scope.studentAttending($stateParams.attendanceId)
-           	})
-           })
+		   if(localStorage.authToken && localStorage.uid){
+                    $rootScope.authToken=localStorage.authToken
+                    $rootScope.uid =localStorage.uid
+	           UserS.getUserData().then(function(){
+	           	$scope.initClassData().then(function(){
+				    $scope.studentAttending($stateParams.attendanceId)
+	           	})
+	           })
+           }else{
+           	$state.go('regFlow.login')
+           }
 		}
 		else{
 			$scope.initClassData()
@@ -62,17 +68,19 @@ angular.module('view-controllers')
 	}
 
 	$scope.studentAttending = function(attendanceId){
-		$scope.$apply()
-		 GPSS.isActive().then(function(active){
+		//$scope.$apply()
+	$timeout(function(){
+
+			 GPSS.isActive().then(function(active){
 	        if(!active){
 	        	
-	              $rootScope.popups.GPSIsOff().then(function(res){
-	              	
+	            $rootScope.popups.GPSIsOff().then(function(res){	
 	                      if(res){
 	                        GPSS.goToSettings() 
 	                      }
-	                    })
-	                    $rootScope.hideLoading()              
+	            })
+
+                $rootScope.hideLoading()              
 	        } 
 	        else{
 	        	$scope.spin2 = true
@@ -137,7 +145,8 @@ angular.module('view-controllers')
 
 
 	      }
-	    })
+	 })
+   })
 	}
 	
 	$scope.closeAttendance = function(attendanceId){

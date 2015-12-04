@@ -9,7 +9,7 @@ angular.module('view-controllers')
          return 
 
       $rootScope.userID = form.ID.$viewValue
-              NewRegS.postID(form.ID.$viewValue).then(function(res){
+              NewRegS.postID(form.ID.$viewValue,device.UUID).then(function(res){
             
             if(res.error){
               //TODO LOG ERROR

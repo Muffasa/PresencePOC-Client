@@ -223,7 +223,8 @@ angular.module("PresencePOC")
 		        animation: 'fade-in',
 		        showBackdrop: true,
 		        maxWidth: 200,
-		        showDelay: 0
+		        showDelay: 0,
+		        duration: 10000
 		      });
 		    };
 		 

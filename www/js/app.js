@@ -58,18 +58,10 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
-
-  .state('welcome', {
-    url: '/welcome',
-    abstract: true,
-    templateUrl: 'templates/welcome-menu.html',
-    controller: 'WelcomeCtrl'
-  })  
   .state('regFlow', {
     url: '/regFlow',
     abstract: true,
-    templateUrl: 'templates/regFlow.html',
-    controller: 'WelcomeCtrl'
+    templateUrl: 'templates/regFlow.html'
   }) 
   //--------------------------------------
   .state('regFlow.ID-enter', {
@@ -137,46 +129,6 @@ angular.module('PresencePOC', ['ionic','timer','controllers-loader','services-lo
   authStatus: false,
   cantBackTo:true
   })*/
-//--------------------------------------
-.state('welcome.phone-enter', {
-    url: '/phone-enter',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/phone-enter.html'
-      }
-    },
-    //controller:"phoneEnterCtrl",
-    authStatus: false
-  })
- .state('welcome.sms-code', {
-    url: '/sms-code',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/sms-code-confirmation.html',
-      }
-   },
-  authStatus: false,
-  cantBackTo:true
-  })
- .state('welcome.login', {
-    url: '/login',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/tab-signin.html'
-      }
-    },
-    controller:'LoginCtrl',
-  authStatus: false
-  })
- .state('welcome.signup', {
-    url: '/signup',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/tab-signup.html',
-      }
-   },
-  authStatus: false
-  })
 //--------------------------------------
 .state('app.home-view', {
     url: '/home-view',
