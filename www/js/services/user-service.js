@@ -67,7 +67,7 @@ angular.module("user-service",[])
 		initUser:initUser,
 		getUserData:getUserData,
     clearUserData:clearUserData,
-    RegistrationCompeleteSingIn
+    RegistrationCompeleteSingIn:RegistrationCompeleteSingIn
 	}
 
 }])
