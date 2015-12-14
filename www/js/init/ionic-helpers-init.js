@@ -6,13 +6,22 @@ angular.module("PresencePOC")
 		$rootScope.popups = {
 
 		        GPSIsOff:function(){
+		        var buttonText="Turn on"
+
+		        if(device.platform === "iOS" && parseFloat(device.version) < 8){
+                 var buttonText = "iOS 8+"
+                 var cantGoToSet = true
+		        }
+
 		        	var d = $q.defer()
 		        	$ionicPopup.confirm({
 		                title: 'GPS off',
 		                template: 'You have to turn on the GPS in order to continue',
 		                cancelText:'Cancel',
-		                okText:'Turn on'
-		              }).then(function(res){ 
+		                okText:buttonText
+		              }).then(function(res){
+		                if(cantGoToSet)
+		                  return d.reject(false)
 		              	d.resolve(res)
 		              },function(err){
 		              	d.reject(err)
@@ -173,7 +182,7 @@ angular.module("PresencePOC")
 		              },function(err){
 		              	d.reject(err)
 		              })
-		        	return d.promise 
+		        	return d.promise
 		        },
 		        masterIDRcognized:function(){
 		        	var d = $q.defer()
@@ -185,7 +194,7 @@ angular.module("PresencePOC")
 		              },function(err){
 		              	d.reject(err)
 		              })
-		        	return d.promise 
+		        	return d.promise
 		        },
 		        IDDoNotExist:function(){
 		        	var d = $q.defer()
@@ -197,7 +206,7 @@ angular.module("PresencePOC")
 		              },function(err){
 		              	d.reject(err)
 		              })
-		        	return d.promise 
+		        	return d.promise
 		        },
 		        serverError:function(){
 		        	var d = $q.defer()
@@ -212,7 +221,7 @@ angular.module("PresencePOC")
 		        	return d.promise
 		        }
 
-		        
+
 
 
 			}
@@ -227,8 +236,8 @@ angular.module("PresencePOC")
 		        duration: 10000
 		      });
 		    };
-		 
-		 
+
+
 		    $rootScope.hideLoading = function() {
 		      $ionicLoading.hide();
 		    };
@@ -241,8 +250,8 @@ angular.module("PresencePOC")
 					    		text:["hello banners! going next in 3..","im next! bye bye in 3.."]
 					    	})
 		            },
-		        testClose:{}    
+		        testClose:{}
             }
 	})
-	
+
 }])
